@@ -1,9 +1,10 @@
 'use client'
 // import { HeroVideoSection } from "@/components/sections/hero-video-section";
 import { siteConfig } from "@/lib/config";
-import Link from "next/link";
+// import Link from "next/link";
+import React from "react";
 import { LiquidButton } from "../ui/Liquid-button";
-import Hyperspeed from "../ui/auoralightray";
+import Hyperspeed from "../ui/hyperspeed-component";
 import { hyperspeedPresets } from "@/components/ui/hyperspeed";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { useTheme } from "next-themes";
@@ -12,21 +13,25 @@ const HeroSection = () => {
   const { hero } = siteConfig;
   const prefersReducedMotion = useReducedMotion();
   const { theme } = useTheme();
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <section id="hero" className="w-full relative mt-4">
-      {!prefersReducedMotion && (
-        <div style={{ width: '100%', height: '600px', position: 'absolute'}}>
-        <Hyperspeed 
-        theme={theme as "light" | "dark"}
-        effectOptions={hyperspeedPresets(theme as "light" | "dark").one}
-    />   
-    </div>
+      {isMounted && (
+        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] absolute top-0 left-0 overflow-hidden">
+          <Hyperspeed 
+            theme={theme as "light" | "dark"}
+            effectOptions={hyperspeedPresets(theme as "light" | "dark").one}
+          />   
+        </div>
       )}
       {prefersReducedMotion && (
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background"
-          style={{ width: '100%', height: '600px' }}
+          className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
         />
       )}
       <div className="relative flex flex-col items-center w-full px-6">
@@ -52,7 +57,7 @@ const HeroSection = () => {
           </div>
           <div className="flex items-center gap-2.5 flex-wrap justify-center mb-2">
             <LiquidButton 
-              className="cursor-pointer" 
+              className="cursor-pointer min-h-[44px] min-w-[120px] text-base px-6 py-3" 
               onClick={() => window.location.href = "#"}
             >
               Book Demo

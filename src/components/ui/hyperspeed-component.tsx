@@ -1009,19 +1009,52 @@ class App {
     }
     this.container = container;
 
+
+
     this.renderer = new THREE.WebGLRenderer({
       antialias: false,
-      alpha: true,
+      alpha: false, // Set to false for solid background
     });
-    this.renderer.setSize(container.offsetWidth, container.offsetHeight, false);
-    this.renderer.setPixelRatio(window.devicePixelRatio);
+    
+    // Force proper dimensions - use viewport if container has no size
+    let width = container.offsetWidth;
+    let height = container.offsetHeight;
+    
+    if (width === 0 || height === 0) {
+      // Fallback to container's parent or viewport dimensions
+      const rect = container.getBoundingClientRect();
+      width = rect.width || Math.min(window.innerWidth, 1200);
+      height = rect.height || Math.min(window.innerHeight * 0.6, 600);
+    }
+    
+    // Ensure minimum dimensions
+    width = Math.max(width, 300);
+    height = Math.max(height, 200);
+    
 
+    
+    this.renderer.setSize(width, height, false);
+    this.renderer.setPixelRatio(window.devicePixelRatio);
+    
     this.composer = new EffectComposer(this.renderer);
     container.appendChild(this.renderer.domElement);
 
+    // CRITICAL FIX: Force canvas dimensions after it's in the DOM
+    setTimeout(() => {
+      const rect = container.getBoundingClientRect();
+      const finalWidth = rect.width || width;
+      const finalHeight = rect.height || height;
+      
+      if (finalWidth > 0 && finalHeight > 0) {
+        this.renderer.setSize(finalWidth, finalHeight, false);
+        this.camera.aspect = finalWidth / finalHeight;
+        this.camera.updateProjectionMatrix();
+      }
+    }, 100);
+
     this.camera = new THREE.PerspectiveCamera(
       options.fov,
-      container.offsetWidth / container.offsetHeight,
+      width / height,
       0.1,
       10000
     );
@@ -1030,7 +1063,7 @@ class App {
     this.camera.position.x = 0;
 
     this.scene = new THREE.Scene();
-    this.scene.background = null;
+    this.scene.background = new THREE.Color(options.colors.background);
 
     
 
@@ -1103,12 +1136,19 @@ class App {
       })
     );
 
-    const smaaPass = new EffectPass(
-      this.camera,
-      new SMAAEffect({
-        preset: SMAAPreset.MEDIUM
-      })
-    );
+    // Create SMAA effect with loaded images if available
+    const smaaEffect = this.assets.smaa 
+      ? new SMAAEffect(
+          this.assets.smaa.search,
+          this.assets.smaa.area,
+          SMAAPreset.MEDIUM
+        )
+      : new SMAAEffect({
+          preset: SMAAPreset.MEDIUM
+        });
+
+    const smaaPass = new EffectPass(this.camera, smaaEffect);
+    
     this.renderPass.renderToScreen = false;
     this.bloomPass.renderToScreen = false;
     smaaPass.renderToScreen = true;
@@ -1167,8 +1207,6 @@ class App {
     this.container.addEventListener("mousedown", this.onMouseDown);
     this.container.addEventListener("mouseup", this.onMouseUp);
     this.container.addEventListener("mouseout", this.onMouseUp);
-
-    this.tick();
   }
 
   onMouseDown(ev: MouseEvent) {
@@ -1233,22 +1271,52 @@ class App {
   dispose() {
     this.disposed = true;
     
-    if (this.renderer) {
-      this.renderer.dispose();
-    }
-    if (this.composer) {
-      this.composer.dispose();
-    }
+    // Dispose of materials and geometries
     if (this.scene) {
+      this.scene.traverse((object) => {
+        if (object instanceof THREE.Mesh) {
+          if (object.geometry) {
+            object.geometry.dispose();
+          }
+          if (object.material) {
+            if (Array.isArray(object.material)) {
+              object.material.forEach((material) => material.dispose());
+            } else {
+              object.material.dispose();
+            }
+          }
+        }
+      });
       this.scene.clear();
     }
     
+    // Dispose renderer and composer
+    if (this.composer) {
+      this.composer.dispose();
+    }
+    if (this.renderer) {
+      this.renderer.dispose();
+      this.renderer.forceContextLoss();
+      // Remove canvas from DOM
+      const canvas = this.renderer.domElement;
+      if (canvas && canvas.parentNode) {
+        canvas.parentNode.removeChild(canvas);
+      }
+    }
+    
+    // Remove event listeners
     window.removeEventListener("resize", this.onWindowResize.bind(this));
     if (this.container) {
       this.container.removeEventListener("mousedown", this.onMouseDown);
       this.container.removeEventListener("mouseup", this.onMouseUp);
       this.container.removeEventListener("mouseout", this.onMouseUp);
     }
+    
+    // Clear references
+    this.scene = null as any;
+    this.renderer = null as any;
+    this.composer = null as any;
+    this.camera = null as any;
   }
 
   setSize(width: number, height: number, updateStyles: boolean) {
@@ -1269,15 +1337,15 @@ class App {
   }
 }
 
-const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {} }) => {
-  const mergedOptions: HyperspeedOptions = {
-    ...defaultOptions,
-    ...effectOptions,
-  };
+const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {}, theme }) => {
   const hyperspeed = useRef<HTMLDivElement>(null);
   const appRef = useRef<App | null>(null);
 
   useEffect(() => {
+    const mergedOptions: HyperspeedOptions = {
+      ...defaultOptions,
+      ...effectOptions,
+    };
     if (appRef.current) {
       appRef.current.dispose();
       const container = document.getElementById('lights');
@@ -1291,23 +1359,90 @@ const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {} }) => {
     const container = hyperspeed.current;
     if (!container) return;
 
-    const options = { ...mergedOptions };
-    if (typeof options.distortion === "string") {
-      options.distortion = distortions[options.distortion];
-    }
+    // Wait for the container to have proper dimensions
+    let retryAttempts = 0;
+    const initApp = async () => {
+      if (container.offsetWidth > 0 && container.offsetHeight > 0) {
+        const options = { ...mergedOptions };
+        if (typeof options.distortion === "string") {
+          options.distortion = distortions[options.distortion];
+        }
 
-    const myApp = new App(container, options);
-    appRef.current = myApp;
-    myApp.loadAssets().then(myApp.init);
+        try {
+          const app = new App(container, options);
+          appRef.current = app;
+          
+          // CRITICAL: Load assets first, then initialize, then start animation
+          await app.loadAssets();
+          app.init();
+          app.tick(); // Start the animation loop
+          
+
+        } catch (error) {
+          console.error('Hyperspeed: Failed to initialize', error);
+        }
+      } else {
+        // If container doesn't have dimensions yet, try again with exponential backoff
+        if (retryAttempts < 10) {
+          retryAttempts++;
+          setTimeout(initApp, Math.min(100 * Math.pow(1.5, retryAttempts), 1000));
+        } else {
+          console.error('Hyperspeed: Failed to initialize after 10 attempts - container has no dimensions');
+        }
+      }
+    };
+
+    // Use multiple approaches to ensure container has dimensions
+    const checkAndInit = () => {
+      console.log('Hyperspeed: Checking container dimensions', {
+        offsetWidth: container.offsetWidth,
+        offsetHeight: container.offsetHeight,
+        clientWidth: container.clientWidth,
+        clientHeight: container.clientHeight,
+        scrollWidth: container.scrollWidth,
+        scrollHeight: container.scrollHeight
+      });
+      initApp();
+    };
+
+    // Try immediately
+    if (container.offsetWidth > 0 && container.offsetHeight > 0) {
+      console.log('Hyperspeed: Container has dimensions immediately');
+      initApp();
+    } else {
+      // Use multiple timing strategies
+      requestAnimationFrame(() => {
+        if (container.offsetWidth > 0 && container.offsetHeight > 0) {
+          console.log('Hyperspeed: Container has dimensions after RAF');
+          initApp();
+        } else {
+          setTimeout(checkAndInit, 100);
+        }
+      });
+    }
 
     return () => {
       if (appRef.current) {
         appRef.current.dispose();
       }
     };
-  }, [mergedOptions]);
+  }, [effectOptions, theme]);
 
-  return <div id="lights" ref={hyperspeed}></div>;
+  return (
+    <div
+      ref={hyperspeed}
+      id="lights"
+      style={{
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        zIndex: 0,
+        pointerEvents: 'none'
+      }}
+    />
+  );
 };
 
 export default Hyperspeed;

@@ -59,6 +59,9 @@ export default function RootLayout({
           }}
         />
         
+        {/* Plausible Analytics */}
+        <script defer data-domain="fliptechpro.com" src="https://plausible.io/js/script.js"></script>
+        
         {/* Resource hints for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />

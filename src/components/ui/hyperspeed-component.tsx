@@ -1137,15 +1137,9 @@ class App {
     );
 
     // Create SMAA effect with loaded images if available
-    const smaaEffect = this.assets.smaa 
-      ? new SMAAEffect(
-          this.assets.smaa.search,
-          this.assets.smaa.area,
-          SMAAPreset.MEDIUM
-        )
-      : new SMAAEffect({
-          preset: SMAAPreset.MEDIUM
-        });
+    const smaaEffect = new SMAAEffect({
+      preset: SMAAPreset.MEDIUM
+    });
 
     const smaaPass = new EffectPass(this.camera, smaaEffect);
     
@@ -1158,32 +1152,7 @@ class App {
     this.composer.addPass(smaaPass);
   }
 
-  loadAssets(): Promise<void> {
-    const assets = this.assets;
-    return new Promise((resolve) => {
-      const manager = new THREE.LoadingManager(resolve);
 
-      const searchImage = new Image();
-      const areaImage = new Image();
-      assets.smaa = {};
-
-      searchImage.addEventListener("load", function () {
-        assets.smaa.search = this;
-        manager.itemEnd("smaa-search");
-      });
-
-      areaImage.addEventListener("load", function () {
-        assets.smaa.area = this;
-        manager.itemEnd("smaa-area");
-      });
-
-      manager.itemStart("smaa-search");
-      manager.itemStart("smaa-area");
-
-      searchImage.src = SMAAEffect.searchImageDataURL;
-      areaImage.src = SMAAEffect.areaImageDataURL;
-    });
-  }
 
   init() {
     this.initPasses();
@@ -1372,8 +1341,7 @@ const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {}, theme }) => {
           const app = new App(container, options);
           appRef.current = app;
           
-          // CRITICAL: Load assets first, then initialize, then start animation
-          await app.loadAssets();
+          // Initialize and start animation
           app.init();
           app.tick(); // Start the animation loop
           

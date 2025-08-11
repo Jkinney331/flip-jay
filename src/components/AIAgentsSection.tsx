@@ -225,7 +225,7 @@ function AIAgentsSection() {
                     </div>
 
                     {/* Mobile Layout - Centered and Reordered */}
-                    <div className="lg:hidden flex flex-col items-center text-center max-w-md mx-auto space-y-6">
+                    <div className="lg:hidden flex flex-col items-center text-center max-w-xs mx-auto space-y-4 px-4">
                       {/* Specialty badge */}
                       <div className="animate-fade-up animate-delay-100">
                         <Badge 
@@ -238,14 +238,14 @@ function AIAgentsSection() {
 
                       {/* Agent name */}
                       <div className="animate-fade-up animate-delay-200">
-                        <h3 className="text-4xl font-bold text-foreground">
+                        <h3 className="text-3xl font-bold text-foreground">
                           {agent.name}
                         </h3>
                       </div>
 
                       {/* Orb */}
-                      <div className="animate-fade-up animate-delay-300 py-4">
-                        <div className="w-[280px] h-[280px] mx-auto">
+                      <div className="animate-fade-up animate-delay-300 py-2">
+                        <div className="w-[240px] h-[240px] mx-auto">
                           <Orb
                             hue={agent.hue}
                             hoverIntensity={0.41}
@@ -263,20 +263,20 @@ function AIAgentsSection() {
                       </div>
 
                       {/* Key Capabilities */}
-                      <div className="animate-fade-up animate-delay-500 space-y-4 w-full">
-                        <h4 className="text-lg font-semibold text-foreground">
+                      <div className="animate-fade-up animate-delay-500 space-y-3 w-full max-w-xs">
+                        <h4 className="text-base font-semibold text-foreground">
                           Key Capabilities
                         </h4>
                         <ul className="space-y-2">
                           {agent.capabilities.map((capability, index) => (
                             <li 
                               key={index} 
-                              className="flex items-center gap-3 text-left animate-fade-up"
+                              className="flex items-start gap-2 text-left animate-fade-up"
                             >
-                              <div className="flex-shrink-0">
-                                <CheckCircle className="h-4 w-4 text-green-500" />
+                              <div className="flex-shrink-0 mt-0.5">
+                                <CheckCircle className="h-3 w-3 text-green-500" />
                               </div>
-                              <span className="text-sm text-muted-foreground">
+                              <span className="text-xs text-muted-foreground leading-relaxed">
                                 {capability}
                               </span>
                             </li>
@@ -379,7 +379,7 @@ function AIAgentsSection() {
                 </div>
 
                 {/* Mobile Layout - Centered and Reordered */}
-                <div className="lg:hidden flex flex-col items-center text-center max-w-md mx-auto space-y-6">
+                <div className="lg:hidden flex flex-col items-center text-center max-w-xs mx-auto space-y-4 px-4">
                   {/* Specialty badge */}
                   <div className="animate-fade-up animate-delay-100">
                     <Badge 

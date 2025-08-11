@@ -1039,19 +1039,6 @@ class App {
     this.composer = new EffectComposer(this.renderer);
     container.appendChild(this.renderer.domElement);
 
-    // CRITICAL FIX: Force canvas dimensions after it's in the DOM
-    setTimeout(() => {
-      const rect = container.getBoundingClientRect();
-      const finalWidth = rect.width || width;
-      const finalHeight = rect.height || height;
-      
-      if (finalWidth > 0 && finalHeight > 0) {
-        this.renderer.setSize(finalWidth, finalHeight, false);
-        this.camera.aspect = finalWidth / finalHeight;
-        this.camera.updateProjectionMatrix();
-      }
-    }, 100);
-
     this.camera = new THREE.PerspectiveCamera(
       options.fov,
       width / height,
@@ -1061,6 +1048,19 @@ class App {
     this.camera.position.z = -5;
     this.camera.position.y = 8;
     this.camera.position.x = 0;
+
+    // CRITICAL FIX: Force canvas dimensions after it's in the DOM and camera is created
+    setTimeout(() => {
+      const rect = container.getBoundingClientRect();
+      const finalWidth = rect.width || width;
+      const finalHeight = rect.height || height;
+      
+      if (finalWidth > 0 && finalHeight > 0 && this.renderer && this.camera) {
+        this.renderer.setSize(finalWidth, finalHeight, false);
+        this.camera.aspect = finalWidth / finalHeight;
+        this.camera.updateProjectionMatrix();
+      }
+    }, 100);
 
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(options.colors.background);

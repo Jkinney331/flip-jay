@@ -9,8 +9,8 @@ export function MobileStickyCTA() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button after scrolling past hero section (roughly 800px)
-      setIsVisible(window.scrollY > 800);
+      // Show button after minimal scrolling (roughly 200px - first scroll)
+      setIsVisible(window.scrollY > 200);
     };
 
     window.addEventListener("scroll", handleScroll);

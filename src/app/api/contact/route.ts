@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import nodemailer from 'nodemailer';
+import { supabase } from '@/lib/supabase';
+import { ContactSubmission, ContactFormResponse, RateLimitData } from '@/type/contact';
 import fs from 'fs/promises';
 import path from 'path';
-import { ContactSubmission, ContactFormResponse, RateLimitData } from '@/type/contact'
 
 // Validation schema using Zod
 const ContactFormSchema = z.object({
@@ -13,13 +14,10 @@ const ContactFormSchema = z.object({
   message: z.string().min(10, 'Message must be at least 10 characters').max(1000, 'Message is too long'),
 });
 
-// Rate limiting configuration
+// Rate limiting configuration (keeping file-based for simplicity)
 const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
 const RATE_LIMIT_MAX_REQUESTS = 5;
-
-// File paths for data storage
 const DATA_DIR = path.join(process.cwd(), 'data');
-const SUBMISSIONS_FILE = path.join(DATA_DIR, 'contact-submissions.json');
 const RATE_LIMIT_FILE = path.join(DATA_DIR, 'rate-limits.json');
 
 // Ensure data directory exists
@@ -99,10 +97,37 @@ async function updateRateLimit(ip: string): Promise<void> {
   await fs.writeFile(RATE_LIMIT_FILE, JSON.stringify(rateLimits, null, 2));
 }
 
-// Data persistence functions
+// Data persistence functions using Supabase (with fallback)
 async function saveSubmission(submission: ContactSubmission): Promise<void> {
+  if (supabase) {
+    // Use Supabase if configured
+    const { error } = await supabase
+      .from('contact_submissions')
+      .insert([{
+        name: submission.name,
+        email: submission.email,
+        company: submission.company || null,
+        message: submission.message,
+        ip: submission.ip,
+        user_agent: submission.userAgent,
+        submission_id: submission.id
+      }]);
+
+    if (error) {
+      console.error('Supabase error:', error);
+      throw new Error('Failed to save contact submission');
+    }
+  } else {
+    // Fallback to file storage if Supabase not configured
+    await saveSubmissionToFile(submission);
+  }
+}
+
+// Fallback file storage function
+async function saveSubmissionToFile(submission: ContactSubmission): Promise<void> {
   await ensureDataDir();
   
+  const SUBMISSIONS_FILE = path.join(DATA_DIR, 'contact-submissions.json');
   let submissions: ContactSubmission[] = [];
   
   try {

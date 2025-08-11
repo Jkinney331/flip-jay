@@ -64,7 +64,7 @@ const CTASection = () => {
             
             <p className="text-xs sm:text-sm font-medium text-white mt-2">© 2025 FlipTech Pro. All rights reserved.</p>
             <Link
-              href="/privacy-policy"
+              href="/privacy"
               className="text-xs sm:text-sm font-medium text-white mt-2 sm:mt-4 md:mt-6 hover:underline"
             >
               Privacy Policy

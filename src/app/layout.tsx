@@ -23,6 +23,10 @@ const geistMono = Geist_Mono({
 
 export const viewport: Viewport = {
   themeColor: "black",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export const metadata: Metadata = {
@@ -45,7 +49,6 @@ export default function RootLayout({
         {/* Resource hints for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="dns-prefetch" href="https://brand.stripe.com" />
         
         {/* Preload critical hero images if any */}
         <link 

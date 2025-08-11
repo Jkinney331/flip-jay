@@ -2,11 +2,12 @@
 
 import React, { useState } from 'react';
 import { SectionHeader } from '@/components/section-header';
-import { Button } from '@/components/ui/button';
+// import { Button } from '@/components/ui/button';
 import { ContactFormData, ContactFormResponse } from '@/type/contact'
 import { LiquidButton } from '../ui/Liquid-button';
 
 const ContactSection = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -18,6 +19,11 @@ const ContactSection = () => {
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
+
+  // Prevent hydration errors from browser extensions
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -58,11 +64,14 @@ const ContactSection = () => {
     <section id="contact" className="flex flex-col items-center justify-center gap-10 pb-10 w-full relative">
       <SectionHeader>
         <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance">Get In Touch</h2>
-        <p className="text-muted-foreground text-center text-balance font-medium">Have a question or want to work together? We'd love to hear from you.</p>
+        <p className="text-muted-foreground text-center text-balance font-medium">Have a question or want to work together? We&apos;d love to hear from you.</p>
       </SectionHeader>
 
       <div className="w-full px-6 flex justify-center">
-        <form onSubmit={handleSubmit} className="w-full max-w-[800px] space-y-6 p-6 md:p-8 border border-border rounded-lg dark:bg-zinc-900 bg-white ">
+        {!isMounted ? (
+          <div className="w-full max-w-[800px] h-[400px] p-6 md:p-8 border border-border rounded-lg dark:bg-zinc-900 bg-white animate-pulse" />
+        ) : (
+        <form onSubmit={handleSubmit} className="w-full max-w-[800px] space-y-6 p-6 md:p-8 border border-border rounded-lg dark:bg-zinc-900 bg-white " suppressHydrationWarning>
           {submitStatus.type && (
             <div className={`p-4 rounded-lg text-sm font-medium ${submitStatus.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200 dark:bg-green-950 dark:text-green-200 dark:border-green-800' : 'bg-red-50 text-red-800 border border-red-200 dark:bg-red-950 dark:text-red-200 dark:border-red-800'}`}>
               {submitStatus.message}
@@ -100,6 +109,7 @@ const ContactSection = () => {
      </LiquidButton>
 
         </form>
+        )}
       </div>
     </section>
   );

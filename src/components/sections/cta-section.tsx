@@ -31,7 +31,7 @@ const CTASection = () => {
             <div className="mt-4  flex flex-col items-center justify-center gap-2">
               <LiquidButton 
                 onClick={() => window.location.href = ctaSection.button.href}
-                className="text-black font-semibold text-sm h-10 w-fit px-4 bg-transparent flex items-center justify-center"
+                className="text-blue-600 font-semibold text-lg h-12 w-fit px-8 py-3 bg-white/95 backdrop-blur-sm border border-white/20 rounded-lg shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 flex items-center justify-center"
               >
                 {ctaSection.button.text}
               </LiquidButton>

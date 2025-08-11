@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/config";
 export default function LogoCarousel() {
   const logos = siteConfig.companyShowcase.companyLogos;
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+  const [emblaRef] = useEmblaCarousel({ loop: true }, [
     AutoScroll({ playOnInit: true, speed: 0.8 }) // 👈 slower speed
   ]);
 

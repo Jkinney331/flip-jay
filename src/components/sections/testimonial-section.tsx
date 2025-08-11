@@ -3,9 +3,9 @@
 import { SectionHeader } from "@/components/section-header";
 import { SocialProofTestimonials } from "@/components/testimonial-scroll";
 import { siteConfig } from "@/lib/config";
-import { Quote } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { GlowingEffect } from "../ui/AcetrinityGlowCard";
+// import { Quote } from "lucide-react";
+// import { cn } from "@/lib/utils";
+// import { GlowingEffect } from "../ui/AcetrinityGlowCard";
 
 const TestimonialSection = () => {
   const { testimonials } = siteConfig;

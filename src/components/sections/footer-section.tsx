@@ -2,8 +2,8 @@
 
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { siteConfig } from "@/lib/config";
-import Link from "next/link";
+// import { siteConfig } from "@/lib/config";
+// import Link from "next/link";
 
 const FooterSection = () => {
   const tablet = useMediaQuery("(max-width: 1024px)");

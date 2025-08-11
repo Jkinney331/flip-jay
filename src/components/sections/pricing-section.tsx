@@ -47,9 +47,9 @@ const PricingSection = () => {
           </div>
 
           {/* Features List */}
-          <ul className="space-y-3 text-sm mb-8 flex flex-col items-start justify-start  md:items-center md:justify-start">
+          <ul className="space-y-3 text-sm mb-8 flex flex-col items-center justify-start">
             {tier.features.map((feature) => (
-              <li key={feature} className="flex items-center gap-2">
+              <li key={feature} className="flex items-center gap-2 text-center lg:text-left">
                 <div className="w-5 h-5 rounded-full border border-primary/20 flex items-center justify-center">
                   <svg
                     width="8"

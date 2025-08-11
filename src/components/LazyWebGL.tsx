@@ -22,7 +22,7 @@ export function LazyWebGL({
   fallback,
   height = '400px',
   className = '',
-  disableOnReducedMotion = true,
+  disableOnReducedMotion = false,
 }: LazyWebGLProps) {
   const { ref, shouldRender } = useLazyRender({
     rootMargin: '100px', // Start loading slightly before visible
@@ -41,7 +41,7 @@ export function LazyWebGL({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
         </div>
-        <p className="text-sm text-muted-foreground">Interactive content disabled for performance</p>
+        <p className="text-sm text-muted-foreground">Interactive content disabled for accessibility</p>
       </div>
     </div>
   );

@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import React from "react";
-import { cn } from "@/lib/utils";
-import { LiquidCard, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
+// import { cn } from "@/lib/utils";
+import { LiquidCard, CardHeader, CardTitle, CardDescription } from "./ui/card";
 
 const caseStudies = [
   {

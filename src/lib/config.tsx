@@ -50,7 +50,7 @@ export const siteConfig = {
     links: [
       { id: 1, name: "Home", href: "#hero" },
       { id: 2, name: "How it Works", href: "#bento" },
-      { id: 3, name: "Features", href: "#features" },
+      { id: 3, name: "Features", href: "#agents" },
       { id: 4, name: "Pricing", href: "#pricing" },
     ],
   },
@@ -189,22 +189,6 @@ export const siteConfig = {
       height={20}
       className="logo-auto"
     />
-  )
-},
-      {
-  id: 9,
-  name: "Company 9",
-  logo: (
-    <>
-      {/* Use official Stripe wordmark from CDN; readable in light and dark */}
-      <Image
-        src="https://brand.stripe.com/img/v3/stripe_rgb.svg"
-        alt="Stripe logo - online payment processing platform"
-        width={110}
-        height={28}
-        className="logo-auto dark:brightness-110"
-      />
-    </>
   )
 },
       {
@@ -931,7 +915,7 @@ export const siteConfig = {
     title: "Automate. Simplify. Thrive",
     backgroundImage: "/agent-cta-background.webp",
     button: {
-      text: "FREE custom demo today",
+      text: "Book Demo",
       href: "/contact",
     },
     subtext: "No obligations, no questions asked",

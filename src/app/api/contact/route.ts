@@ -3,7 +3,7 @@ import { z } from 'zod';
 import nodemailer from 'nodemailer';
 import fs from 'fs/promises';
 import path from 'path';
-import { ContactFormData, ContactSubmission, ContactFormResponse, RateLimitData } from '@/type/contact'
+import { ContactSubmission, ContactFormResponse, RateLimitData } from '@/type/contact'
 
 // Validation schema using Zod
 const ContactFormSchema = z.object({

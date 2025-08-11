@@ -22,6 +22,7 @@ import dynamic from "next/dynamic";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { LazyWebGL } from "@/components/LazyWebGL";
 import DemoOne from "@/components/sections/secondAiDashboard";
+import { MobileStickyCTA } from "@/components/ui/mobile-sticky-cta";
 
 export default function Home() {
   return (
@@ -99,6 +100,9 @@ export default function Home() {
       </ErrorBoundary>
       
       <FooterSection />
+      
+      {/* Mobile Sticky CTA */}
+      <MobileStickyCTA />
     </main>
   );
 }

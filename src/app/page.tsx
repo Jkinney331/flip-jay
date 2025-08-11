@@ -1,5 +1,5 @@
 // const FeatureSection = dynamic(() => import("@/components/sections/feature-section"));
-const EmpowerCards = dynamic(() => import("@/components/sections/empowercard"));
+// const EmpowerCards = dynamic(() => import("@/components/sections/empowercard"));
 const BentoSection = dynamic(() => import("@/components/sections/bento-section"));
 const GrowthSection = dynamic(() => import("@/components/sections/growth-section"));
 // const QuoteSection = dynamic(() => import("@/components/sections/quote-section"));
@@ -14,7 +14,7 @@ const AIAgentsSection = dynamic(() => import("@/components/AIAgentsSection"));
 const GlowCard = dynamic(() => import("@/components/ui/GlowEffectCard"));
 
 import CaseStudiesSection from "@/components/casestudies";
-import { AIDashboard } from "@/components/sections/AiDashboard";
+// import { AIDashboard } from "@/components/sections/AiDashboard";
 import ContactSection from "@/components/sections/Contact";
 import HeroSection from "@/components/sections/hero-section";
 import WhyNowSection from "@/components/WhyNowSec";
@@ -56,7 +56,7 @@ export default function Home() {
       </ErrorBoundary> */}
       
       <ErrorBoundary>
-        <LazyWebGL height="600px" disableOnReducedMotion={true}>
+        <LazyWebGL height="600px" disableOnReducedMotion={false}>
           <GlowCard/>
         </LazyWebGL>
       </ErrorBoundary>

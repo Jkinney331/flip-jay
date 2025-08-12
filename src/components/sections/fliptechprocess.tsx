@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
+import { useDomainContent } from "@/hooks/useDomainContent";
 
 interface Step {
   icon: React.ReactNode;
@@ -10,42 +11,86 @@ interface Step {
   desc: string;
 }
 
+// Get process steps based on domain (30-day for teams, 14-day for agents)
+const getProcessSteps = (config: any): Step[] => {
+  const isTeamFocused = config.brand === 'FlipTech Pro';
+  
+  if (isTeamFocused) {
+    // 30-day (4-week) process for AI Teams/Departments
+    return [
+      {
+        icon: <Image src="/bulb.svg" alt="Light bulb icon representing discovery and strategy phase" width={24} height={24} className="w-6 h-6" />,
+        day: "Week 1",
+        title: "Discovery & Strategy",
+        desc: "We uncover your business challenges and outline the perfect AI solution.",
+      },
+      {
+        icon: <Image src="/calender.svg" alt="Calendar icon representing solution design phase" width={24} height={24} className="w-6 h-6" />,
+        day: "Week 2",
+        title: "Solution Design",
+        desc: "Our engineers architect the technical approach and data strategy.",
+      },
+      {
+        icon: <Image src="/code.svg" alt="Code icon representing rapid development phase" width={24} height={24} className="w-6 h-6" />,
+        day: "Week 3",
+        title: "Rapid Development",
+        desc: "Intensive development sprint brings your AI solution to life.",
+      },
+      {
+        icon: <Image src="/testing.svg" alt="Testing icon representing testing and refinement phase" width={28} height={28} className="w-6 h-6" />,
+        day: "Week 4",
+        title: "Testing & Refinement",
+        desc: "Rigorous testing ensures your AI solution works flawlessly.",
+      },
+      {
+        icon: <Image src="/rocket.svg" alt="Rocket icon representing launch phase" width={24} height={24} className="w-6 h-6" />,
+        day: "Day 30",
+        title: "Launch",
+        desc: "Your AI solution goes live with comprehensive documentation and support.",
+      },
+    ];
+  } else {
+    // 14-day process for Individual AI Agents
+    return [
+      {
+        icon: <Image src="/bulb.svg" alt="Light bulb icon representing discovery and strategy phase" width={24} height={24} className="w-6 h-6" />,
+        day: "Days 1–2",
+        title: "Discovery & Strategy",
+        desc: "We uncover your business challenges and outline the perfect AI solution.",
+      },
+      {
+        icon: <Image src="/calender.svg" alt="Calendar icon representing solution design phase" width={24} height={24} className="w-6 h-6" />,
+        day: "Days 3–5",
+        title: "Solution Design",
+        desc: "Our engineers architect the technical approach and data strategy.",
+      },
+      {
+        icon: <Image src="/code.svg" alt="Code icon representing rapid development phase" width={24} height={24} className="w-6 h-6" />,
+        day: "Days 6–10",
+        title: "Rapid Development",
+        desc: "Intensive development sprint brings your AI solution to life.",
+      },
+      {
+        icon: <Image src="/testing.svg" alt="Testing icon representing testing and refinement phase" width={28} height={28} className="w-6 h-6" />,
+        day: "Days 11–13",
+        title: "Testing & Refinement",
+        desc: "Rigorous testing ensures your AI solution works flawlessly.",
+      },
+      {
+        icon: <Image src="/rocket.svg" alt="Rocket icon representing launch phase" width={24} height={24} className="w-6 h-6" />,
+        day: "Day 14",
+        title: "Launch",
+        desc: "Your AI solution goes live with comprehensive documentation and support.",
+      },
+    ];
+  }
+};
+
 export default function FlipTechProcess() {
+  const { config } = useDomainContent();
+  const steps = getProcessSteps(config);
   const [progress, setProgress] = useState(0);
   const sectionRef = useRef<HTMLElement | null>(null);
-
-  const steps: Step[] = [
-    {
-      icon: <Image src="/bulb.svg" alt="Light bulb icon representing discovery and strategy phase" width={24} height={24} className="w-6 h-6" />,
-      day: "Days 1–2",
-      title: "Discovery & Strategy",
-      desc: "We uncover your business challenges and outline the perfect AI solution.",
-    },
-    {
-      icon: <Image src="/calender.svg" alt="Calendar icon representing solution design phase" width={24} height={24} className="w-6 h-6" />,
-      day: "Days 3–5",
-      title: "Solution Design",
-      desc: "Our engineers architect the technical approach and data strategy.",
-    },
-    {
-      icon: <Image src="/code.svg" alt="Code icon representing rapid development phase" width={24} height={24} className="w-6 h-6" />,
-      day: "Days 6–10",
-      title: "Rapid Development",
-      desc: "Intensive development sprint brings your AI solution to life.",
-    },
-    {
-      icon: <Image src="/testing.svg" alt="Testing icon representing testing and refinement phase" width={28} height={28} className="w-6 h-6" />,
-      day: "Days 11–13",
-      title: "Testing & Refinement",
-      desc: "Rigorous testing ensures your AI solution works flawlessly.",
-    },
-    {
-      icon: <Image src="/rocket.svg" alt="Rocket icon representing launch phase" width={24} height={24} className="w-6 h-6" />,
-      day: "Day 14",
-      title: "Launch",
-      desc: "Your AI solution goes live with comprehensive documentation and support.",
-    },
-  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -89,7 +134,9 @@ export default function FlipTechProcess() {
         THE <span className="text-blue-500">FLIP-TECH</span> PROCESS
       </h2>
       <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-300 px-2">
-        Our proven 14-day journey from concept to working AI solution.
+        {config.brand === 'FlipTech Pro' 
+          ? 'Our proven 30-day journey from concept to working AI solution.'
+          : 'Our proven 14-day journey from concept to working AI solution.'}
       </p>
 
       <div className="relative mt-12">

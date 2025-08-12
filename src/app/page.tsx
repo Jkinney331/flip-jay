@@ -8,7 +8,7 @@ const PricingSection = dynamic(() => import("@/components/sections/pricing-secti
 const TestimonialSection = dynamic(() => import("@/components/sections/testimonial-section"));
 const FAQSection = dynamic(() => import("@/components/sections/faq-section"));
 const CTASection = dynamic(() => import("@/components/sections/cta-section"));
-const FooterSection = dynamic(() => import("@/components/sections/footer-section"));
+
 const FlipTechProcess = dynamic(() => import("@/components/sections/fliptechprocess"));
 const AIAgentsSection = dynamic(() => import("@/components/AIAgentsSection"));
 const GlowCard = dynamic(() => import("@/components/ui/GlowEffectCard"));
@@ -139,7 +139,7 @@ export default function Home() {
         </CTAVariantWrapper>
       </ErrorBoundary>
       
-      <FooterSection />
+
       
       {/* Mobile Sticky CTA */}
       <MobileStickyCTA />

@@ -5,22 +5,18 @@ export const DOMAIN_CONTENT = {
   'fliptechpro.com': {
     hero: {
       title: "Where Vision Meets Velocity",
-      subtitle: "AI Solutions Built for Growing Businesses",
-      description: "From idea to production in 14 days",
-      support_text: "Transform your small business with cutting-edge AI solutions, delivered with unmatched speed and expertise. Join 500+ businesses already growing with AI.",
+      subtitle: "AI Teams and Departments Built for Scale",
+      description: "From chaos to production in 30 days",
+      support_text: "Transform your business with cutting-edge AI solutions, delivered with unmatched speed and expertise.",
       cta: {
         primary: {
-          text: "Start Your AI Journey",
+          text: "Book Demo",
           href: "#contact"
-        },
-        secondary: {
-          text: "View Success Stories",
-          href: "#testimonials"
         }
       },
       socialProof: {
-        badge: "500+ Small Businesses Transformed",
-        metric: "Average 300% ROI in 90 days"
+        badge: "Specialized AI Departments",
+        metric: "Complete teams ready in 30 days"
       }
     },
     pricing: {
@@ -47,8 +43,8 @@ export const DOMAIN_CONTENT = {
       ]
     },
     cta: {
-      title: "Automate. Simplify. Thrive",
-      subtitle: "Ready to transform your business with AI?",
+      title: "Scale Your Operations with AI",
+      subtitle: "Deploy specialized AI teams across marketing, operations, product, research, and support. Each team works seamlessly together, handling complex tasks so your human teams can focus on strategic initiatives.",
       button: {
         text: "Book Demo",
         href: "#contact"
@@ -58,29 +54,25 @@ export const DOMAIN_CONTENT = {
       backgroundImage: "/agent-cta-background.webp"
     },
     testimonials: {
-      title: "Small Businesses, Big Results",
-      subtitle: "See how companies like yours achieved incredible growth"
+      title: "AI Teams, Real Results",
+      subtitle: "See how companies deployed complete AI departments"
     }
   },
   'fliptech-ai.com': {
     hero: {
-      title: "Enterprise AI Excellence",
-      subtitle: "Professional AI Solutions for Scaling Companies",
-      description: "From enterprise concept to deployment in 14 days",
-      support_text: "Deploy enterprise-grade AI solutions with professional support and white-glove implementation. Trusted by Fortune 500 companies worldwide.",
+      title: "Where Vision Meets Velocity",
+      subtitle: "Individual AI Agents for Every Task",
+      description: "From idea to production in 14 days",
+      support_text: "Transform your business with cutting-edge AI solutions, delivered with unmatched speed and expertise.",
       cta: {
         primary: {
-          text: "Schedule Consultation",
+          text: "Book Demo",
           href: "#contact"
-        },
-        secondary: {
-          text: "View Enterprise Cases",
-          href: "#case-studies"
         }
       },
       socialProof: {
-        badge: "Fortune 500 Trusted",
-        metric: "Enterprise-grade security & compliance"
+        badge: "Specialized AI Agents",
+        metric: "Custom agents ready in 14 days"
       }
     },
     pricing: {
@@ -107,19 +99,19 @@ export const DOMAIN_CONTENT = {
       ]
     },
     cta: {
-      title: "Scale Your Operations with AI",
-      subtitle: "Professional implementation with ongoing support",
+      title: "Automate. Simplify. Thrive",
+      subtitle: "Deploy specialized AI agents across marketing, operations, product, research, and support. Each agent works seamlessly together, handling complex tasks so your human teams can focus on strategic initiatives.",
       button: {
-        text: "Schedule Strategy Call",
+        text: "Book Demo",
         href: "#contact"
       },
-      subtext: "White-glove implementation in 14 days",
+      subtext: "No obligations, no questions asked",
       companyName: "FlipTech AI",
       backgroundImage: "/agent-cta-background.webp"
     },
     testimonials: {
-      title: "Enterprise Success Stories",
-      subtitle: "How professional teams achieved operational excellence"
+      title: "AI Agents, Real Results",
+      subtitle: "See how specialized agents transformed individual workflows"
     }
   },
   'localhost': {

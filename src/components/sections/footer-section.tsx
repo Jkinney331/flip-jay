@@ -2,13 +2,10 @@
 
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { useDomainContent } from "@/hooks/useDomainContent";
 import { LogoInline } from "@/components/ui/logo";
-import Link from "next/link";
 
 const FooterSection = () => {
   const tablet = useMediaQuery("(max-width: 1024px)");
-  const { config } = useDomainContent();
 
   return (
     <footer id="footer" className="w-full pb-0">

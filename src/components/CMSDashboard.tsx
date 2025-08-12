@@ -106,7 +106,7 @@ export function CMSDashboard() {
   };
 
   const handleContentEdit = (sectionId: string, field: string, value: any) => {
-    setEditedContent(prev => ({
+    setEditedContent((prev: any) => ({
       ...prev,
       [sectionId]: {
         ...prev[sectionId],

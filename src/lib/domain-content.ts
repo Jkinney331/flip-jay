@@ -16,7 +16,7 @@ export const DOMAIN_CONTENT = {
       },
       socialProof: {
         badge: "Specialized AI Departments",
-        metric: "Complete teams ready in 30 days"
+        metric: ""
       }
     },
     pricing: {

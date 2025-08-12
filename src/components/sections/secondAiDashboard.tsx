@@ -755,7 +755,6 @@ const AgentDashboardShowcase: React.FC<AgentDashboardShowcaseProps> = ({
               className="group inline-flex items-center justify-center gap-3 px-8 py-3 dark:text-white text-black bg-transparent font-semibold cursor-pointer text-lg"
             >
               {primaryButtonText}
-              <ArrowRightIcon className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
             </LiquidButton>
           </motion.div>
         </div>

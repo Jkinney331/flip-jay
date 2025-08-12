@@ -157,7 +157,6 @@ const ReportSection = () => {
                 ) : (
                   <>
                     Download Free Report
-                    <ArrowRight className="w-5 h-5" />
                   </>
                 )}
               </LiquidButton>

@@ -337,7 +337,7 @@ export const siteConfig = {
     ],
   },
   bentoSection: {
-    title: "Empower Your organization with AI",
+    title: "Empower Your organization with AI in 30 days",
     description:
       "Real-time collaboration, seamless integrations, and actionable insights to streamline your operations.",
     items: [

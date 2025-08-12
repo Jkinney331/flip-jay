@@ -9,7 +9,6 @@ import { hyperspeedPresets } from "@/components/ui/hyperspeed";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { useTheme } from "next-themes";
 import { useHeroContent, useDomainContent } from "@/hooks/useDomainContent";
-import { Logo } from "@/components/ui/logo";
 
 const HeroSection = () => {
   const heroContent = useHeroContent();
@@ -53,11 +52,6 @@ const HeroSection = () => {
           
           <div className="flex flex-col items-center justify-center gap-5">
             {/* Logo */}
-                          <Logo 
-                size="lg" 
-                showTagline={true} 
-                className="mb-4"
-              />
             
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-medium tracking-tighter text-balance text-center text-primary">
               {heroContent.title}

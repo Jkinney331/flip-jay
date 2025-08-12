@@ -119,7 +119,7 @@ export function Navbar() {
         >
           <div className="flex h-[56px] items-center justify-between p-4">
             <Link href="/" className="flex items-center gap-3 w-52">
-              <LogoInline size="md" />
+              <span class="text-lg font-semibold text-primary">FlipTech Pro</span>
             </Link>
 
             <NavMenu />
@@ -187,7 +187,7 @@ export function Navbar() {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                   <Link href="/" className="flex items-center gap-3">
-                    <LogoInline size="sm" />
+                    <span class="text-base font-semibold text-primary">FlipTech Pro</span>
                   </Link>
                   <button
                     onClick={toggleDrawer}

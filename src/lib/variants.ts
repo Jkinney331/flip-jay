@@ -22,7 +22,7 @@ export const heroVariants = {
     description: "Join 500+ companies that have transformed their operations with our proven AI solutions and seen 300% ROI within the first quarter.",
     cta: {
       primary: {
-        text: "Start Your AI Journey →",
+        text: "Start Your AI Journey",
         href: "#contact",
       },
       secondary: {

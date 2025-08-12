@@ -11,6 +11,7 @@ import {
 import useEmblaCarousel from "embla-carousel-react";
 import Orb from "@/components/ui/Orb";
 import { LiquidButton } from "@/components/ui/Liquid-button";
+import { useDomainContent } from "@/hooks/useDomainContent";
 
 interface Agent {
   id: number;
@@ -24,101 +25,121 @@ interface Agent {
   hue: number;
 }
 
-const agentData: Agent[] = [
-  {
-    id: 1,
-    name: "Nancy",
-    role: "Natural Language Processing Specialist",
-    badge: "NLP SPECIALIST",
-    description: "Advanced natural language processing that transforms unstructured communication into actionable business insights with precision and context awareness.",
-    capabilities: [
-      "Sentiment Analysis & Emotion Detection",
-      "Document Processing & Extraction",
-      "Conversation Intelligence",
-      "Content Classification & Tagging"
-    ],
-    icon: MessageSquare,
-    specialty: "NLP",
-    hue: 280, // Purple/Pink for NLP
-  },
-  {
-    id: 2,
-    name: "Ellis",
-    role: "Predictive Analytics Expert", 
-    badge: "ANALYTICS EXPERT",
-    description: "Sophisticated predictive modeling that identifies patterns, forecasts trends, and provides data-driven recommendations before opportunities emerge.",
-    capabilities: [
-      "Predictive Forecasting & Modeling",
-      "Customer Behavior Analysis",
-      "Market Trend Detection",
-      "Risk Assessment & Mitigation"
-    ],
-    icon: TrendingUp,
-    specialty: "Analytics",
-    hue: 200, // Blue for Analytics
-  },
-  {
-    id: 3,
-    name: "Justin",
-    role: "Intelligent Automation Architect",
-    badge: "AUTOMATION ARCHITECT",
-    description: "Intelligent automation that streamlines complex workflows, eliminates manual bottlenecks, and optimizes operational efficiency across systems.",
-    capabilities: [
-      "Workflow Optimization & Design",
-      "Process Automation & Integration",
-      "Quality Control & Monitoring",
-      "Performance Analytics & Reporting"
-    ],
-    icon: Cog,
-    specialty: "Automation",
-    hue: 40, // Orange for Automation
-  },
-  {
-    id: 4,
-    name: "Dan",
-    role: "Social Media Strategist",
-    badge: "SOCIAL STRATEGIST",
-    description: "Strategic social media management that amplifies brand voice, engages audiences, and drives meaningful connections across all digital channels.",
-    capabilities: [
-      "Content Strategy & Planning",
-      "Audience Engagement & Growth",
-      "Brand Voice Consistency",
-      "Performance Tracking & Optimization"
-    ],
-    icon: MessageSquare,
-    specialty: "Social",
-    hue: 150, // Green for Social
-  },
-  {
-    id: 5,
-    name: "Chloe",
-    role: "Project Operations Manager",
-    badge: "OPERATIONS MANAGER",
-    description: "Comprehensive project operations management that ensures seamless execution, resource optimization, and timely delivery of business objectives.",
-    capabilities: [
-      "Project Planning & Coordination",
-      "Resource Allocation & Management",
-      "Timeline Tracking & Optimization",
-      "Stakeholder Communication"
-    ],
-    icon: CheckCircle,
-    specialty: "Operations",
-    hue: 260, // Indigo for Operations
-  },
-];
+// Content for teams (FlipTech Pro) vs agents (FlipTech AI)
+const getAgentContent = (config: any) => {
+  const isTeamFocused = config.brand === 'FlipTech Pro';
+  
+  return [
+    {
+      id: 1,
+      name: isTeamFocused ? "Content Team" : "Nancy",
+      role: isTeamFocused ? "Marketing & Communications Department" : "Natural Language Processing Specialist", 
+      badge: isTeamFocused ? "CONTENT TEAM" : "NLP SPECIALIST",
+      description: isTeamFocused 
+        ? "Complete marketing department that handles content creation, social media, email campaigns, and brand messaging across all channels with consistent voice and strategy."
+        : "Advanced natural language processing that transforms unstructured communication into actionable business insights with precision and context awareness.",
+      capabilities: isTeamFocused ? [
+        "Content Creation & Strategy",
+        "Social Media Management", 
+        "Email Campaign Automation",
+        "Brand Voice & Messaging"
+      ] : [
+        "Sentiment Analysis & Emotion Detection",
+        "Document Processing & Extraction", 
+        "Conversation Intelligence",
+        "Content Classification & Tagging"
+      ],
+      icon: MessageSquare,
+      specialty: isTeamFocused ? "Marketing" : "NLP",
+      hue: 280, // Purple/Pink
+    },
+    {
+      id: 2,
+      name: isTeamFocused ? "Analytics Team" : "Ellis",
+      role: isTeamFocused ? "Data Science & Business Intelligence Department" : "Predictive Analytics Expert", 
+      badge: isTeamFocused ? "ANALYTICS TEAM" : "ANALYTICS EXPERT",
+      description: isTeamFocused
+        ? "Complete data science department that handles predictive modeling, business intelligence, customer analytics, and data-driven insights across all business functions."
+        : "Sophisticated predictive modeling that identifies patterns, forecasts trends, and provides data-driven recommendations before opportunities emerge.",
+      capabilities: isTeamFocused ? [
+        "Business Intelligence & Reporting",
+        "Customer Analytics & Segmentation",
+        "Predictive Modeling & Forecasting",
+        "Data Pipeline & Infrastructure"
+      ] : [
+        "Predictive Forecasting & Modeling",
+        "Customer Behavior Analysis",
+        "Market Trend Detection",
+        "Risk Assessment & Mitigation"
+      ],
+      icon: TrendingUp,
+      specialty: "Analytics",
+      hue: 200, // Blue for Analytics
+    },
+    {
+      id: 3,
+      name: isTeamFocused ? "Operations Team" : "Justin",
+      role: isTeamFocused ? "Process Automation & Operations Department" : "Intelligent Automation Architect",
+      badge: isTeamFocused ? "OPERATIONS TEAM" : "AUTOMATION ARCHITECT",
+      description: isTeamFocused
+        ? "Complete operations department that handles workflow automation, process optimization, quality control, and operational efficiency across all business systems."
+        : "Intelligent automation that streamlines complex workflows, eliminates manual bottlenecks, and optimizes operational efficiency across systems.",
+      capabilities: isTeamFocused ? [
+        "Process Automation & Integration",
+        "Quality Control & Monitoring", 
+        "Workflow Design & Optimization",
+        "Operational Excellence & Efficiency"
+      ] : [
+        "Workflow Optimization & Design",
+        "Process Automation & Integration",
+        "Quality Control & Monitoring",
+        "Performance Analytics & Reporting"
+      ],
+      icon: Cog,
+      specialty: isTeamFocused ? "Operations" : "Automation",
+      hue: 40, // Orange for Automation
+    },
+    {
+      id: 4,
+      name: isTeamFocused ? "Customer Success Team" : "Dan",
+      role: isTeamFocused ? "Customer Experience & Support Department" : "Social Media Strategist",
+      badge: isTeamFocused ? "CUSTOMER SUCCESS TEAM" : "SOCIAL STRATEGIST",
+      description: isTeamFocused
+        ? "Complete customer success department that handles customer support, experience optimization, retention strategies, and relationship management across all touchpoints."
+        : "Strategic social media management that amplifies brand voice, engages audiences, and drives meaningful connections across all digital channels.",
+      capabilities: isTeamFocused ? [
+        "Customer Support & Experience",
+        "Retention & Success Strategies",
+        "Relationship Management & Growth",
+        "Feedback Analysis & Improvement"
+      ] : [
+        "Content Strategy & Planning",
+        "Audience Engagement & Growth",
+        "Brand Voice Consistency",
+        "Performance Tracking & Optimization"
+      ],
+      icon: MessageSquare,
+      specialty: isTeamFocused ? "Customer Success" : "Social",
+      hue: 150, // Green
+    }
+  ];
+};
 
 function AIAgentsSection() {
-  // const [selectedId, setSelectedId] = useState<number | null>(null);
-
+  const { config } = useDomainContent();
+  const agentData = getAgentContent(config);
+  
   const [viewportRef, embla] = useEmblaCarousel({ align: "center", loop: true });
 
   const palette = useMemo(
     () => ({
       NLP: "from-fuchsia-500 to-pink-500",
+      Marketing: "from-fuchsia-500 to-pink-500",
       Analytics: "from-blue-500 to-cyan-500",
       Automation: "from-amber-400 to-orange-500",
-      Social: "from-emerald-500 to-green-400",
       Operations: "from-indigo-500 to-purple-500",
+      Social: "from-emerald-500 to-green-400",
+      "Customer Success": "from-emerald-500 to-green-400",
       Default: "from-slate-300 to-slate-500",
     }),
     []
@@ -129,10 +150,14 @@ function AIAgentsSection() {
       <div className="mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Meet Your Specialized AI Agents
+            {config.brand === 'FlipTech Pro' 
+              ? 'Meet Your Specialized AI Department' 
+              : 'Meet Your Specialized AI Agents'}
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-            Every agent comes with an intuitive dashboard to fine-tune, train, and optimize performance.
+            {config.brand === 'FlipTech Pro'
+              ? 'Every team comes with an intuitive dashboard to fine-tune, train, and optimize performance.'
+              : 'Every agent comes with an intuitive dashboard to fine-tune, train, and optimize performance.'}
           </p>
         </div>
 
@@ -330,14 +355,16 @@ function AIAgentsSection() {
                       {/* Agent name */}
                       <div className="animate-fade-up animate-delay-200">
                         <h3 className="text-6xl font-bold text-foreground">
-                          Your Agent
+                          {config.brand === 'FlipTech Pro' ? 'Your Team' : 'Your Agent'}
                         </h3>
                       </div>
 
                       {/* Description */}
                       <div className="animate-fade-up animate-delay-300">
                         <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                          We create bespoke AI agents tailored specifically to your business needs, integrating seamlessly with your existing workflows and systems.
+                          {config.brand === 'FlipTech Pro'
+                            ? 'We create bespoke AI teams tailored specifically to your business needs, integrating seamlessly with your existing workflows and systems.'
+                            : 'We create bespoke AI agents tailored specifically to your business needs, integrating seamlessly with your existing workflows and systems.'}
                         </p>
                       </div>
 
@@ -393,7 +420,7 @@ function AIAgentsSection() {
                   {/* Agent name */}
                   <div className="animate-fade-up animate-delay-200">
                     <h3 className="text-4xl font-bold text-foreground">
-                      Your Agent
+                      {config.brand === 'FlipTech Pro' ? 'Your Team' : 'Your Agent'}
                     </h3>
                   </div>
 
@@ -412,7 +439,9 @@ function AIAgentsSection() {
                   {/* Description */}
                   <div className="animate-fade-up animate-delay-400">
                     <p className="text-base text-muted-foreground leading-relaxed">
-                      We create bespoke AI agents tailored specifically to your business needs, integrating seamlessly with your existing workflows and systems.
+                      {config.brand === 'FlipTech Pro'
+                        ? 'We create bespoke AI teams tailored specifically to your business needs, integrating seamlessly with your existing workflows and systems.'
+                        : 'We create bespoke AI agents tailored specifically to your business needs, integrating seamlessly with your existing workflows and systems.'}
                     </p>
                   </div>
 

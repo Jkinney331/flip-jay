@@ -37,9 +37,8 @@ import {
   PricingVariantWrapper, 
   CTAVariantWrapper 
 } from "@/components/VariantWrapper";
-import { ABTestDashboard } from "@/components/ABTestDashboard";
-import { MultiDomainDashboard } from "@/components/MultiDomainDashboard";
-import { CMSDashboard } from "@/components/CMSDashboard";
+
+
 
 export default function Home() {
   return (
@@ -138,14 +137,9 @@ export default function Home() {
       {/* Mobile Sticky CTA */}
       <MobileStickyCTA />
       
-      {/* A/B Test Dashboard (only shows in dev mode or when admin mode is enabled) */}
-      <ABTestDashboard />
+
       
-      {/* Multi-Domain Dashboard */}
-      <MultiDomainDashboard />
-      
-      {/* CMS Dashboard */}
-      <CMSDashboard />
+
     </main>
   );
 }

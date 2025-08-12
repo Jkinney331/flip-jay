@@ -62,7 +62,7 @@ export default function AdminPage() {
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Admin Dashboard</h1>
             <p className="text-muted-foreground">
-              Managing: <Badge variant="secondary">{config.brand}</Badge>
+              Managing: <Badge variant="secondary">{config?.branding?.name || 'Loading...'}</Badge>
             </p>
           </div>
           <button
@@ -86,7 +86,7 @@ export default function AdminPage() {
               <CardHeader>
                 <CardTitle>Content Management System</CardTitle>
                 <CardDescription>
-                  Edit content for {config.brand} ({config.audience} audience)
+                  Edit content for {config?.branding?.name} ({config?.audience} audience)
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -114,7 +114,7 @@ export default function AdminPage() {
               <CardHeader>
                 <CardTitle>Analytics Overview</CardTitle>
                 <CardDescription>
-                  Performance metrics and insights for {config.brand}
+                  Performance metrics and insights for {config?.branding?.name}
                 </CardDescription>
               </CardHeader>
               <CardContent>

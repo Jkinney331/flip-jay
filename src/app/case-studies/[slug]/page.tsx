@@ -152,13 +152,14 @@ const caseStudiesData: CaseStudy[] = [
 ];
 
 interface CaseStudyPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function CaseStudyPage({ params }: CaseStudyPageProps) {
-  const caseStudy = caseStudiesData.find(study => study.slug === params.slug);
+export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
+  const { slug } = await params;
+  const caseStudy = caseStudiesData.find(study => study.slug === slug);
 
   if (!caseStudy) {
     notFound();
@@ -317,7 +318,8 @@ export function generateStaticParams() {
 
 // Generate metadata for each case study
 export async function generateMetadata({ params }: CaseStudyPageProps) {
-  const caseStudy = caseStudiesData.find(study => study.slug === params.slug);
+  const { slug } = await params;
+  const caseStudy = caseStudiesData.find(study => study.slug === slug);
   
   if (!caseStudy) {
     return {

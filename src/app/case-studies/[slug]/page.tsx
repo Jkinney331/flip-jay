@@ -189,9 +189,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               {caseStudy.description}
             </p>
             <div className="flex gap-4">
-              <LiquidButton onClick={() => window.location.href = '#contact'}>
-                Start Your Project
-              </LiquidButton>
+              <a href="#contact">
+                <LiquidButton>
+                  Start Your Project
+                </LiquidButton>
+              </a>
             </div>
           </div>
           <div className="relative h-96 lg:h-[500px] rounded-xl overflow-hidden">
@@ -297,12 +299,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             See how we can create a custom AI solution for your specific needs, just like we did for {caseStudy.title.split(' - ')[0]}.
           </p>
-          <LiquidButton 
-            className="px-8 py-4 text-lg"
-            onClick={() => window.location.href = '#contact'}
-          >
-            Start Your AI Project
-          </LiquidButton>
+          <a href="#contact">
+            <LiquidButton className="px-8 py-4 text-lg">
+              Start Your AI Project
+            </LiquidButton>
+          </a>
         </div>
       </section>
     </main>

@@ -2,40 +2,31 @@
   command = "npm run build"
   publish = ".next"
 
-# Multi-domain redirects
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
 [[redirects]]
-  from = "https://fliptechpro.com/*"
+  from = "/*"
   to = "/index.html"
   status = 200
 
-[[redirects]]
-  from = "https://www.fliptechpro.com/*"
-  to = "https://fliptechpro.com/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://fliptech-ai.com/*"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "https://www.fliptech-ai.com/*"
-  to = "https://fliptech-ai.com/:splat"
-  status = 301
-  force = true
-
-# Environment variables
 [context.production.environment]
   NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptechpro.com"
+  NEXT_PUBLIC_GA_ID = "G-9FP4KSXP0J"
+  NODE_ENV = "production"
 
 [context.deploy-preview.environment]
-  NEXT_PUBLIC_DEFAULT_DOMAIN = "localhost"
+  NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptechpro.com"
+  NEXT_PUBLIC_GA_ID = "G-9FP4KSXP0J"
+  NODE_ENV = "production"
 
 [context.branch-deploy.environment]
-  NEXT_PUBLIC_DEFAULT_DOMAIN = "localhost"
+  NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptechpro.com"
+  NEXT_PUBLIC_GA_ID = "G-9FP4KSXP0J"
+  NODE_ENV = "production"
 
-# Headers for better performance
+# Headers for security and performance
 [[headers]]
   for = "/*"
   [headers.values]
@@ -43,19 +34,22 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
 # Cache static assets
 [[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
   for = "/images/*"
   [headers.values]
-    Cache-Control = "max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
 
+# Security headers for API routes
 [[headers]]
-  for = "/*.js"
+  for = "/api/*"
   [headers.values]
-    Cache-Control = "max-age=31536000"
-
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "max-age=31536000"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"

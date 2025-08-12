@@ -8,9 +8,11 @@ import Hyperspeed from "../ui/hyperspeed-component";
 import { hyperspeedPresets } from "@/components/ui/hyperspeed";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { useTheme } from "next-themes";
+import { useHeroContent, useDomainContent } from "@/hooks/useDomainContent";
 
 const HeroSection = () => {
-  const { hero } = siteConfig;
+  const heroContent = useHeroContent();
+  const { config } = useDomainContent();
   const prefersReducedMotion = useReducedMotion();
   const { theme } = useTheme();
   const [isMounted, setIsMounted] = React.useState(false);
@@ -40,35 +42,50 @@ const HeroSection = () => {
 
         </div> */}
         <div className="relative z-10 pt-32 max-w-3xl mx-auto h-full w-full flex flex-col gap-10 items-center justify-center">
-          {/* <p className="border border-border bg-accent rounded-full text-sm h-8 px-3 flex items-center gap-2">
-            {hero.badgeIcon}
-            {hero.badge}
-          </p> */}
+          {/* Social Proof Badge */}
+          {heroContent.socialProof && (
+            <div className="border border-primary/20 bg-primary/10 rounded-full text-sm h-8 px-4 flex items-center gap-2">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              {heroContent.socialProof.badge}
+            </div>
+          )}
+          
           <div className="flex flex-col items-center justify-center gap-5">
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-medium tracking-tighter text-balance text-center text-primary">
-              {hero.title}
+              {heroContent.title}
             </h1>
             <p className="text-base md:text-lg xl:text-2xl text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
-              {hero.description}
+              {heroContent.subtitle}
             </p>
-            <p className="text-base md:text-lg xl:text-2xl text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
-              {hero.support_text}
+            <p className="text-base md:text-lg xl:text-xl text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
+              {heroContent.support_text}
             </p>
           </div>
+          
           <div className="flex items-center gap-2.5 flex-wrap justify-center mb-2">
             <LiquidButton 
               className="cursor-pointer min-h-[44px] min-w-[120px] text-base px-6 py-3" 
-              onClick={() => window.location.href = "#"}
+              onClick={() => window.location.href = heroContent.cta.primary.href}
             >
-              Book Demo
+              {heroContent.cta.primary.text}
             </LiquidButton>
-            {/* <Link
-              href={hero.cta.secondary.href}
-              className="h-10 flex items-center justify-center w-32 px-5 text-sm font-normal tracking-wide text-primary rounded-full transition-all ease-out active:scale-95 bg-white dark:bg-background border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white/80 dark:hover:bg-background/80"
-            >
-              {hero.cta.secondary.text}
-            </Link> */}
+            
+            {heroContent.cta.secondary && (
+              <button
+                onClick={() => window.location.href = heroContent.cta.secondary.href}
+                className="h-10 flex items-center justify-center w-32 px-5 text-sm font-normal tracking-wide text-primary rounded-full transition-all ease-out active:scale-95 bg-white dark:bg-background border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white/80 dark:hover:bg-background/80"
+              >
+                {heroContent.cta.secondary.text}
+              </button>
+            )}
           </div>
+          
+          {/* Domain-specific metric */}
+          {heroContent.socialProof?.metric && (
+            <div className="text-sm text-muted-foreground text-center">
+              {heroContent.socialProof.metric}
+            </div>
+          )}
         </div>
       </div>
       {/* <HeroVideoSection /> */}

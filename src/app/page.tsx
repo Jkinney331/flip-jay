@@ -13,6 +13,13 @@ const FlipTechProcess = dynamic(() => import("@/components/sections/fliptechproc
 const AIAgentsSection = dynamic(() => import("@/components/AIAgentsSection"));
 const GlowCard = dynamic(() => import("@/components/ui/GlowEffectCard"));
 
+// A/B Testing Variant Components
+const HeroVariantA = dynamic(() => import("@/components/variants/hero/HeroVariantA"));
+const HeroVariantB = dynamic(() => import("@/components/variants/hero/HeroVariantB"));
+const HeroVariantC = dynamic(() => import("@/components/variants/hero/HeroVariantC"));
+const PricingVariantA = dynamic(() => import("@/components/variants/pricing/PricingVariantA"));
+const CTAVariantA = dynamic(() => import("@/components/variants/cta/CTAVariantA"));
+
 import CaseStudiesSection from "@/components/casestudies";
 // import { AIDashboard } from "@/components/sections/AiDashboard";
 import ContactSection from "@/components/sections/Contact";
@@ -24,12 +31,28 @@ import { LazyWebGL } from "@/components/LazyWebGL";
 import DemoOne from "@/components/sections/secondAiDashboard";
 import { MobileStickyCTA } from "@/components/ui/mobile-sticky-cta";
 
+// A/B Testing Components
+import { 
+  HeroVariantWrapper, 
+  PricingVariantWrapper, 
+  CTAVariantWrapper 
+} from "@/components/VariantWrapper";
+import { ABTestDashboard } from "@/components/ABTestDashboard";
+import { MultiDomainDashboard } from "@/components/MultiDomainDashboard";
+
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
       
       <ErrorBoundary>
-        <HeroSection />
+        <HeroVariantWrapper>
+          {{
+            control: <HeroSection />,
+            variant_a: <HeroVariantA />,
+            variant_b: <HeroVariantB />,
+            variant_c: <HeroVariantC />
+          }}
+        </HeroVariantWrapper>
       </ErrorBoundary>
       
       <ErrorBoundary>
@@ -80,7 +103,12 @@ export default function Home() {
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <PricingSection />
+        <PricingVariantWrapper>
+          {{
+            control: <PricingSection />,
+            variant_a: <PricingVariantA />
+          }}
+        </PricingVariantWrapper>
       </ErrorBoundary>
       
       <ErrorBoundary>
@@ -96,13 +124,24 @@ export default function Home() {
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <CTASection />
+        <CTAVariantWrapper>
+          {{
+            control: <CTASection />,
+            variant_a: <CTAVariantA />
+          }}
+        </CTAVariantWrapper>
       </ErrorBoundary>
       
       <FooterSection />
       
       {/* Mobile Sticky CTA */}
       <MobileStickyCTA />
+      
+      {/* A/B Test Dashboard (only shows in dev mode or when admin mode is enabled) */}
+      <ABTestDashboard />
+      
+      {/* Multi-Domain Dashboard */}
+      <MultiDomainDashboard />
     </main>
   );
 }

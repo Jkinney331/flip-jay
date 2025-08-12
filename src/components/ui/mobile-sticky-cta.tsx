@@ -26,7 +26,7 @@ export function MobileStickyCTA() {
           const element = document.getElementById("contact");
           element?.scrollIntoView({ behavior: "smooth" });
         }}
-        className="!rounded-full w-14 h-14 shadow-lg shadow-black/20 cursor-pointer flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white border-2 border-white/20"
+        className="!rounded-full w-14 h-14 shadow-lg shadow-black/20 cursor-pointer flex items-center justify-center !bg-blue-600 hover:!bg-blue-700 text-white border-2 border-white/20"
       >
         <Phone className="w-6 h-6" />
       </LiquidButton>

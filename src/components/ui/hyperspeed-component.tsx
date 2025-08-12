@@ -998,6 +998,7 @@ class App {
   speedUpTarget: number;
   speedUp: number;
   timeOffset: number;
+  boundOnWindowResize: () => void;
 
   constructor(container: HTMLElement, options: HyperspeedOptions) {
     this.options = options;
@@ -1111,18 +1112,33 @@ class App {
     this.setSize = this.setSize.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
+    this.boundOnWindowResize = this.onWindowResize.bind(this);
 
-    window.addEventListener("resize", this.onWindowResize.bind(this));
+    window.addEventListener("resize", this.boundOnWindowResize);
   }
 
   onWindowResize() {
+    // Add null checks to prevent errors during component unmounting or before initialization
+    if (this.disposed || !this.renderer || !this.camera || !this.composer || !this.container) {
+      return;
+    }
+
     const width = this.container.offsetWidth;
     const height = this.container.offsetHeight;
 
-    this.renderer.setSize(width, height);
-    this.camera.aspect = width / height;
-    this.camera.updateProjectionMatrix();
-    this.composer.setSize(width, height);
+    // Ensure we have valid dimensions
+    if (width <= 0 || height <= 0) {
+      return;
+    }
+
+    try {
+      this.renderer.setSize(width, height);
+      this.camera.aspect = width / height;
+      this.camera.updateProjectionMatrix();
+      this.composer.setSize(width, height);
+    } catch (error) {
+      console.warn('Hyperspeed: Error during window resize:', error);
+    }
   }
 
   initPasses() {
@@ -1274,7 +1290,7 @@ class App {
     }
     
     // Remove event listeners
-    window.removeEventListener("resize", this.onWindowResize.bind(this));
+    window.removeEventListener("resize", this.boundOnWindowResize);
     if (this.container) {
       this.container.removeEventListener("mousedown", this.onMouseDown);
       this.container.removeEventListener("mouseup", this.onMouseUp);

@@ -1,9 +1,61 @@
 [build]
   command = "npm run build"
   publish = ".next"
-  framework = "next"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# Multi-domain redirects
+[[redirects]]
+  from = "https://fliptechpro.com/*"
+  to = "/index.html"
+  status = 200
 
+[[redirects]]
+  from = "https://www.fliptechpro.com/*"
+  to = "https://fliptechpro.com/:splat"
+  status = 301
+  force = true
 
+[[redirects]]
+  from = "https://fliptech-ai.com/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "https://www.fliptech-ai.com/*"
+  to = "https://fliptech-ai.com/:splat"
+  status = 301
+  force = true
+
+# Environment variables
+[context.production.environment]
+  NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptechpro.com"
+
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_DEFAULT_DOMAIN = "localhost"
+
+[context.branch-deploy.environment]
+  NEXT_PUBLIC_DEFAULT_DOMAIN = "localhost"
+
+# Headers for better performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "max-age=31536000"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "max-age=31536000"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "max-age=31536000"

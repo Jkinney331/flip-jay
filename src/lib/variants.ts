@@ -104,6 +104,13 @@ export const pricingVariants = {
       "Direct access to AI experts",
     ],
   },
+  variant_b: {
+    title: "Calculate Your AI ROI",
+    subtitle: "See exactly how much you'll save with our AI solutions.",
+    cta: "Book Demo",
+    badge: "ROI Focused",
+    description: "Use our calculator to see your potential savings and return on investment with FlipTech Pro AI solutions.",
+  },
 };
 
 export const ctaVariants = {

@@ -71,40 +71,40 @@ export const SavingsCalculator: React.FC<SavingsCalculatorProps> = ({ className 
         </div>
       </div>
 
-      {/* Results */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+      {/* Results - Fixed Grid System */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
         <motion.div
-          className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 min-h-[120px]"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
           <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-400 mx-auto mb-2" />
-          <p className="text-sm text-gray-600 dark:text-gray-400">Monthly Savings</p>
-          <p className="text-xl font-bold text-green-600 dark:text-green-400">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Monthly<br/>Savings</p>
+          <p className="text-xl font-bold text-green-600 dark:text-green-400 leading-tight">
             ${potentialSavings.toLocaleString()}
           </p>
         </motion.div>
 
         <motion.div
-          className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 px-2"
+          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 min-h-[120px]"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
           <DollarSign className="w-6 h-6 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
-          <p className="text-sm text-gray-600 dark:text-gray-400">Annual Savings</p>
-          <p className="text-xl font-bold text-blue-600 dark:text-blue-400">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Annual<br/>Savings</p>
+          <p className="text-xl font-bold text-blue-600 dark:text-blue-400 leading-tight">
             ${annualSavings.toLocaleString()}
           </p>
         </motion.div>
 
         <motion.div
-          className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 min-h-[120px]"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
           <Clock className="w-6 h-6 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
-          <p className="text-sm text-gray-600 dark:text-gray-400">ROI</p>
-          <p className="text-xl font-bold text-purple-600 dark:text-purple-400">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">ROI</p>
+          <p className="text-xl font-bold text-purple-600 dark:text-purple-400 leading-tight">
             {roi.toFixed(0)}%
           </p>
         </motion.div>

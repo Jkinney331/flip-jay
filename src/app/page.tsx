@@ -18,6 +18,7 @@ const HeroVariantA = dynamic(() => import("@/components/variants/hero/HeroVarian
 const HeroVariantB = dynamic(() => import("@/components/variants/hero/HeroVariantB"));
 const HeroVariantC = dynamic(() => import("@/components/variants/hero/HeroVariantC"));
 const PricingVariantA = dynamic(() => import("@/components/variants/pricing/PricingVariantA"));
+const PricingVariantB = dynamic(() => import("@/components/variants/pricing/PricingVariantB"));
 const CTAVariantA = dynamic(() => import("@/components/variants/cta/CTAVariantA"));
 
 import CaseStudiesSection from "@/components/casestudies";
@@ -106,7 +107,8 @@ export default function Home() {
         <PricingVariantWrapper>
           {{
             control: <PricingSection />,
-            variant_a: <PricingVariantA />
+            variant_a: <PricingVariantA />,
+            variant_b: <PricingVariantB />
           }}
         </PricingVariantWrapper>
       </ErrorBoundary>

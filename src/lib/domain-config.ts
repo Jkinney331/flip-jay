@@ -48,7 +48,7 @@ export const DOMAIN_CONFIG: Record<string, DomainConfig> = {
       accentColor: '#6366F1',
     },
     analytics: {
-      gaId: 'G-PROFESSIONAL', // You'll need a separate GA property
+      gaId: 'G-YOUR-NEW-GA-ID', // Replace with your actual GA4 ID for fliptech-ai.com
       conversionGoals: ['consultation_booked', 'enterprise_contact', 'demo_scheduled']
     },
     theme: {

@@ -39,6 +39,7 @@ import {
 } from "@/components/VariantWrapper";
 import { ABTestDashboard } from "@/components/ABTestDashboard";
 import { MultiDomainDashboard } from "@/components/MultiDomainDashboard";
+import { CMSDashboard } from "@/components/CMSDashboard";
 
 export default function Home() {
   return (
@@ -142,6 +143,9 @@ export default function Home() {
       
       {/* Multi-Domain Dashboard */}
       <MultiDomainDashboard />
+      
+      {/* CMS Dashboard */}
+      <CMSDashboard />
     </main>
   );
 }

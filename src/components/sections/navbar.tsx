@@ -5,12 +5,13 @@ import { NavMenu } from "@/components/nav-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ExternalLink } from "lucide-react";
 import { AnimatePresence, motion, useScroll } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LiquidButton } from "../ui/Liquid-button";
 import { LogoInline } from "@/components/ui/logo";
+import { useDomainContent } from "@/hooks/useDomainContent";
 
 const INITIAL_WIDTH = "70rem";
 const MAX_WIDTH = "800px";
@@ -57,6 +58,10 @@ export function Navbar() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const { config } = useDomainContent();
+  
+  // Show docs link only for FlipTech Pro
+  const showDocsLink = config?.branding?.name === 'FlipTech Pro';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -120,6 +125,19 @@ export function Navbar() {
             <NavMenu />
 
             <div className="flex flex-row items-center gap-1 md:gap-3 shrink-0">
+              <div className="flex items-center space-x-6">
+                {showDocsLink && (
+                  <a
+                    href="https://jays-personal-organization-1.gitbook.io/flip-tech-pro/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden md:flex items-center gap-1 text-sm font-medium text-primary/60 hover:text-primary transition-colors"
+                  >
+                    Docs
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
+              </div>
               <div className="flex items-center space-x-6">
                 <LiquidButton 
                   className="md:block hidden cursor-pointer" 
@@ -210,6 +228,24 @@ export function Navbar() {
                         </a>
                       </motion.li>
                     ))}
+                    {showDocsLink && (
+                      <motion.li
+                        key="docs"
+                        className="p-2.5 border-b border-border last:border-b-0"
+                        variants={drawerMenuVariants}
+                      >
+                        <a
+                          href="https://jays-personal-organization-1.gitbook.io/flip-tech-pro/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 text-primary/60 hover:text-primary/80 transition-colors"
+                          onClick={() => setIsDrawerOpen(false)}
+                        >
+                          Docs
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </motion.li>
+                    )}
                   </AnimatePresence>
                 </motion.ul>
 

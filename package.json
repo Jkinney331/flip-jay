@@ -27,6 +27,7 @@
     "color-bits": "^1.1.0",
     "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
+    "gitbook": "^3.2.3",
     "lucide-react": "^0.479.0",
     "marked": "^15.0.7",
     "motion": "^12.5.0",

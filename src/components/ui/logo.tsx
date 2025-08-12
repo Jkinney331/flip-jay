@@ -1,94 +1,82 @@
 import React from 'react';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 
 interface LogoProps {
   className?: string;
   showTagline?: boolean;
-  taglineColor?: 'black' | 'grey';
   size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
 export function Logo({ 
   className, 
-  showTagline = true, 
-  taglineColor = 'black',
+  showTagline = false,
   size = 'md' 
 }: LogoProps) {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const sizeClasses = {
-    sm: 'text-2xl',
-    md: 'text-4xl',
-    lg: 'text-6xl',
-    xl: 'text-8xl'
+    sm: 'h-8 w-auto',
+    md: 'h-12 w-auto',
+    lg: 'h-16 w-auto',
+    xl: 'h-24 w-auto'
   };
 
-  const taglineSizeClasses = {
-    sm: 'text-sm',
-    md: 'text-base',
-    lg: 'text-lg',
-    xl: 'text-xl'
-  };
+  // Show light version by default until mounted
+  const logoSrc = mounted && theme === 'dark' ? '/logo-dark.png' : '/logo-light.png';
 
   return (
     <div className={cn('flex flex-col items-center', className)}>
-      {/* Logo Container */}
-      <div className={cn('relative font-bold tracking-tight', sizeClasses[size])}>
-        {/* Background geometric shapes */}
-        <div className="absolute inset-0 -z-10">
-          {/* Light grey arrow shapes */}
-          <div className="absolute -top-2 -left-2 w-8 h-8 bg-gray-200 transform rotate-45 opacity-60"></div>
-          <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-gray-200 transform -rotate-45 opacity-60"></div>
-          
-          {/* Light blue geometric elements */}
-          <div className="absolute top-1 right-1 w-4 h-4 bg-blue-200 transform rotate-12 opacity-70"></div>
-          <div className="absolute bottom-1 left-1 w-3 h-3 bg-blue-200 transform -rotate-12 opacity-70"></div>
-        </div>
-        
-        {/* FLP TECH Text */}
-        <span className="text-black">
-          <span className="text-black">F</span>
-          <span className="text-red-500">L</span>
-          <span className="text-blue-500">P</span>
-          {' '}
-          <span className="text-yellow-500">T</span>
-          <span className="text-blue-500">E</span>
-          <span className="text-red-500">C</span>
-          <span className="text-black">H</span>
-        </span>
-      </div>
-      
-      {/* Tagline */}
+      <Image
+        src={logoSrc}
+        alt="FLP-TECH Logo"
+        width={200}
+        height={60}
+        className={cn(sizeClasses[size])}
+        priority
+      />
       {showTagline && (
-        <p className={cn(
-          'mt-2 text-center font-light leading-relaxed',
-          taglineSizeClasses[size],
-          taglineColor === 'black' ? 'text-black' : 'text-gray-400'
-        )}>
-          When you change your perspective, you see things you never knew existed.
+        <p className="mt-2 text-center font-light text-sm text-muted-foreground">
+          When you change your perspective, you see things you never knew existed
         </p>
       )}
     </div>
   );
 }
 
-// Variant for different use cases
-export function LogoInline({ className, size = 'md' }: Omit<LogoProps, 'showTagline' | 'taglineColor'>) {
+// Compact version for navbar
+export function LogoInline({ className, size = 'md' }: Omit<LogoProps, 'showTagline'>) {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const sizeClasses = {
-    sm: 'text-xl',
-    md: 'text-2xl',
-    lg: 'text-3xl',
-    xl: 'text-4xl'
+    sm: 'h-6 w-auto',
+    md: 'h-8 w-auto',
+    lg: 'h-10 w-auto',
+    xl: 'h-12 w-auto'
   };
 
+  // Show light version by default until mounted
+  const logoSrc = mounted && theme === 'dark' ? '/logo-dark.png' : '/logo-light.png';
+
   return (
-    <div className={cn('font-bold tracking-tight', sizeClasses[size], className)}>
-      <span className="text-black">F</span>
-      <span className="text-red-500">L</span>
-      <span className="text-blue-500">P</span>
-      {' '}
-      <span className="text-yellow-500">T</span>
-      <span className="text-blue-500">E</span>
-      <span className="text-red-500">C</span>
-      <span className="text-black">H</span>
-    </div>
+    <Image
+      src={logoSrc}
+      alt="FLP-TECH"
+      width={120}
+      height={36}
+      className={cn(sizeClasses[size], className)}
+      priority
+    />
   );
 }

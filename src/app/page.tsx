@@ -26,6 +26,7 @@ import CaseStudiesSection from "@/components/casestudies";
 import ContactSection from "@/components/sections/Contact";
 import HeroSection from "@/components/sections/hero-section";
 import WhyNowSection from "@/components/WhyNowSec";
+import ReportSection from "@/components/sections/report-section";
 import dynamic from "next/dynamic";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { LazyWebGL } from "@/components/LazyWebGL";
@@ -97,6 +98,10 @@ export default function Home() {
       
       <ErrorBoundary>
         <CaseStudiesSection/>
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <ReportSection/>
       </ErrorBoundary>
       
       <ErrorBoundary>

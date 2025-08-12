@@ -37,7 +37,7 @@ const caseStudies = [
 
 const CaseStudiesSection = () => {
   const { config } = useDomainContent();
-  const timeframe = config.brand === 'FlipTech Pro' ? '30 days' : '14 days';
+  const timeframe = config?.branding?.name === 'FlipTech Pro' ? '30 days' : '14 days';
 
   return (
     <section className="w-full px-8 py-16 max-w-full 2xl:px-24 mx-auto">

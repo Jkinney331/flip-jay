@@ -13,7 +13,7 @@ interface Step {
 
 // Get process steps based on domain (30-day for teams, 14-day for agents)
 const getProcessSteps = (config: any): Step[] => {
-  const isTeamFocused = config.brand === 'FlipTech Pro';
+  const isTeamFocused = config?.branding?.name === 'FlipTech Pro';
   
   if (isTeamFocused) {
     // 30-day (4-week) process for AI Teams/Departments
@@ -134,7 +134,7 @@ export default function FlipTechProcess() {
         THE <span className="text-blue-500">FLIP-TECH</span> PROCESS
       </h2>
       <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-300 px-2">
-        {config.brand === 'FlipTech Pro' 
+        {config?.branding?.name === 'FlipTech Pro' 
           ? 'Our proven 30-day journey from concept to working AI solution.'
           : 'Our proven 14-day journey from concept to working AI solution.'}
       </p>

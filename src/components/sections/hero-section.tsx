@@ -53,12 +53,11 @@ const HeroSection = () => {
           
           <div className="flex flex-col items-center justify-center gap-5">
             {/* Logo */}
-            <Logo 
-              size="lg" 
-              showTagline={true} 
-              taglineColor="black"
-              className="mb-4"
-            />
+                          <Logo 
+                size="lg" 
+                showTagline={true} 
+                className="mb-4"
+              />
             
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-medium tracking-tighter text-balance text-center text-primary">
               {heroContent.title}
@@ -79,12 +78,12 @@ const HeroSection = () => {
               {heroContent.cta.primary.text}
             </LiquidButton>
             
-            {heroContent.cta.secondary && (
+            {heroContent?.cta?.secondary && (
               <button
-                onClick={() => window.location.href = heroContent.cta.secondary.href}
+                onClick={() => window.location.href = heroContent?.cta?.secondary?.href}
                 className="h-10 flex items-center justify-center w-32 px-5 text-sm font-normal tracking-wide text-primary rounded-full transition-all ease-out active:scale-95 bg-white dark:bg-background border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white/80 dark:hover:bg-background/80"
               >
-                {heroContent.cta.secondary.text}
+                {heroContent?.cta?.secondary?.text}
               </button>
             )}
           </div>

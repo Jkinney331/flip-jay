@@ -17,14 +17,14 @@ const FooterSection = () => {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-lg font-semibold mb-4 text-foreground">
-              {config.brand || "FlipTech Pro"}
+              {config?.branding?.name || "FlipTech Pro"}
             </h3>
             <p className="text-muted-foreground mb-4 max-w-md leading-relaxed">
               Transform your business with cutting-edge AI solutions, delivered with unmatched speed and expertise. 
               Join hundreds of companies already growing with AI.
             </p>
             <p className="text-sm text-muted-foreground">
-              © 2024 {config.brand || "FlipTech Pro"}. All rights reserved.
+              © 2024 {config?.branding?.name || "FlipTech Pro"}. All rights reserved.
             </p>
           </div>
 

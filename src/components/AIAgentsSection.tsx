@@ -27,7 +27,7 @@ interface Agent {
 
 // Content for teams (FlipTech Pro) vs agents (FlipTech AI)
 const getAgentContent = (config: any) => {
-  const isTeamFocused = config.brand === 'FlipTech Pro';
+  const isTeamFocused = config?.branding?.name === 'FlipTech Pro';
   
   return [
     {
@@ -150,12 +150,12 @@ function AIAgentsSection() {
       <div className="mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            {config.brand === 'FlipTech Pro' 
+            {config?.branding?.name === 'FlipTech Pro' 
               ? 'Meet Your Specialized AI Department' 
               : 'Meet Your Specialized AI Agents'}
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-            {config.brand === 'FlipTech Pro'
+            {config?.branding?.name === 'FlipTech Pro'
               ? 'Every team comes with an intuitive dashboard to fine-tune, train, and optimize performance.'
               : 'Every agent comes with an intuitive dashboard to fine-tune, train, and optimize performance.'}
           </p>
@@ -355,14 +355,14 @@ function AIAgentsSection() {
                       {/* Agent name */}
                       <div className="animate-fade-up animate-delay-200">
                         <h3 className="text-6xl font-bold text-foreground">
-                          {config.brand === 'FlipTech Pro' ? 'Your Team' : 'Your Agent'}
+                          {config?.branding?.name === 'FlipTech Pro' ? 'Your Team' : 'Your Agent'}
                         </h3>
                       </div>
 
                       {/* Description */}
                       <div className="animate-fade-up animate-delay-300">
                         <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                          {config.brand === 'FlipTech Pro'
+                          {config?.branding?.name === 'FlipTech Pro'
                             ? 'We create bespoke AI teams tailored specifically to your business needs, integrating seamlessly with your existing workflows and systems.'
                             : 'We create bespoke AI agents tailored specifically to your business needs, integrating seamlessly with your existing workflows and systems.'}
                         </p>
@@ -420,7 +420,7 @@ function AIAgentsSection() {
                   {/* Agent name */}
                   <div className="animate-fade-up animate-delay-200">
                     <h3 className="text-4xl font-bold text-foreground">
-                      {config.brand === 'FlipTech Pro' ? 'Your Team' : 'Your Agent'}
+                      {config?.branding?.name === 'FlipTech Pro' ? 'Your Team' : 'Your Agent'}
                     </h3>
                   </div>
 
@@ -439,7 +439,7 @@ function AIAgentsSection() {
                   {/* Description */}
                   <div className="animate-fade-up animate-delay-400">
                     <p className="text-base text-muted-foreground leading-relaxed">
-                      {config.brand === 'FlipTech Pro'
+                      {config?.branding?.name === 'FlipTech Pro'
                         ? 'We create bespoke AI teams tailored specifically to your business needs, integrating seamlessly with your existing workflows and systems.'
                         : 'We create bespoke AI agents tailored specifically to your business needs, integrating seamlessly with your existing workflows and systems.'}
                     </p>

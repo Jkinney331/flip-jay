@@ -12,18 +12,18 @@
   status = 200
 
 [context.production.environment]
-  NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptechpro.com"
-  NEXT_PUBLIC_GA_ID = "G-9FP4KSXP0J"
+  NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptech-ai.com"
+  NEXT_PUBLIC_GA_ID = "G-YOUR-NEW-GA-ID"
   NODE_ENV = "production"
 
 [context.deploy-preview.environment]
-  NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptechpro.com"
-  NEXT_PUBLIC_GA_ID = "G-9FP4KSXP0J"
+  NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptech-ai.com"
+  NEXT_PUBLIC_GA_ID = "G-YOUR-NEW-GA-ID"
   NODE_ENV = "production"
 
 [context.branch-deploy.environment]
-  NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptechpro.com"
-  NEXT_PUBLIC_GA_ID = "G-9FP4KSXP0J"
+  NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptech-ai.com"
+  NEXT_PUBLIC_GA_ID = "G-YOUR-NEW-GA-ID"
   NODE_ENV = "production"
 
 # Headers for security and performance

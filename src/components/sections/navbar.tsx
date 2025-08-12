@@ -10,6 +10,7 @@ import { AnimatePresence, motion, useScroll } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LiquidButton } from "../ui/Liquid-button";
+import { LogoInline } from "@/components/ui/logo";
 
 const INITIAL_WIDTH = "70rem";
 const MAX_WIDTH = "800px";
@@ -113,8 +114,7 @@ export function Navbar() {
         >
           <div className="flex h-[56px] items-center justify-between p-4">
             <Link href="/" className="flex items-center gap-3 w-52">
-              {/* <Icons.logo className="size-7 md:size-10" /> */}
-              <p className="text-lg font-semibold text-primary">Flip-Tech Pro</p>
+              <LogoInline size="md" />
             </Link>
 
             <NavMenu />
@@ -169,10 +169,7 @@ export function Navbar() {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                   <Link href="/" className="flex items-center gap-3">
-                    <Icons.logo className="size-7 md:size-10" />
-                    <p className="text-lg font-semibold text-primary">
-                      Flip-Tech Pro
-                    </p>
+                    <LogoInline size="sm" />
                   </Link>
                   <button
                     onClick={toggleDrawer}

@@ -28,6 +28,7 @@ export function LazyWebGL({
     rootMargin: '100px', // Start loading slightly before visible
   });
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window);
 
   // Simple fallback for reduced motion users
   const reducedMotionFallback = (
@@ -61,7 +62,7 @@ export function LazyWebGL({
 
   return (
     <div ref={ref} className={className}>
-      {disableOnReducedMotion && prefersReducedMotion ? (
+      {(disableOnReducedMotion && prefersReducedMotion) || isMobile ? (
         reducedMotionFallback
       ) : shouldRender ? (
         <Suspense fallback={loadingFallback}>

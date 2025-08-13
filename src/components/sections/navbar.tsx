@@ -151,8 +151,9 @@ export function Navbar() {
               </div>
               <ThemeToggle />
               <button
-                className="md:hidden border border-border size-8 rounded-md cursor-pointer flex items-center justify-center"
+                className="md:hidden border border-border min-w-[44px] min-h-[44px] rounded-md cursor-pointer flex items-center justify-center touch-manipulation active:scale-95 transition-transform"
                 onClick={toggleDrawer}
+                aria-label="Toggle menu"
               >
                 {isDrawerOpen ? (
                   <X className="size-5" />
@@ -208,40 +209,50 @@ export function Navbar() {
                     {siteConfig.nav.links.map((item) => (
                       <motion.li
                         key={item.id}
-                        className="p-2.5 border-b border-border last:border-b-0"
+                        className="border-b border-border last:border-b-0"
                         variants={drawerMenuVariants}
                       >
-                        <a
-                          href={item.href}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            const element = document.getElementById(
-                              item.href.substring(1),
-                            );
-                            element?.scrollIntoView({ behavior: "smooth" });
-                            setIsDrawerOpen(false);
-                          }}
-                          className={`underline-offset-4 hover:text-primary/80 transition-colors ${
-                            activeSection === item.href.substring(1)
-                              ? "text-primary font-medium"
-                              : "text-primary/60"
-                          }`}
-                        >
-                          {item.name}
-                        </a>
+                        {item.href.startsWith('/') ? (
+                          <Link
+                            href={item.href}
+                            className="block py-4 px-3 min-h-[48px] underline-offset-4 hover:text-primary/80 transition-colors touch-manipulation text-primary/60"
+                            onClick={() => setIsDrawerOpen(false)}
+                          >
+                            {item.name}
+                          </Link>
+                        ) : (
+                          <a
+                            href={item.href}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              const element = document.getElementById(
+                                item.href.substring(1),
+                              );
+                              element?.scrollIntoView({ behavior: "smooth" });
+                              setIsDrawerOpen(false);
+                            }}
+                            className={`block py-4 px-3 min-h-[48px] underline-offset-4 hover:text-primary/80 transition-colors touch-manipulation ${
+                              activeSection === item.href.substring(1)
+                                ? "text-primary font-medium"
+                                : "text-primary/60"
+                            }`}
+                          >
+                            {item.name}
+                          </a>
+                        )}
                       </motion.li>
                     ))}
                     {showDocsLink && (
                       <motion.li
                         key="docs"
-                        className="p-2.5 border-b border-border last:border-b-0"
+                        className="border-b border-border last:border-b-0"
                         variants={drawerMenuVariants}
                       >
                         <a
                           href="https://jays-personal-organization-1.gitbook.io/flip-tech-pro/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-primary/60 hover:text-primary/80 transition-colors"
+                          className="flex items-center gap-1 py-4 px-3 min-h-[48px] text-primary/60 hover:text-primary/80 transition-colors touch-manipulation"
                           onClick={() => setIsDrawerOpen(false)}
                         >
                           Docs

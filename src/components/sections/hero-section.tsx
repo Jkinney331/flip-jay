@@ -16,14 +16,22 @@ const HeroSection = () => {
   const prefersReducedMotion = useReducedMotion();
   const { theme } = useTheme();
   const [isMounted, setIsMounted] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
     setIsMounted(true);
+    // Detect mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   return (
     <section id="hero" className="w-full relative mt-4">
-      {isMounted && (
+      {isMounted && !isMobile && !prefersReducedMotion && (
         <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] absolute top-0 left-0 overflow-hidden">
           <Hyperspeed 
             theme={theme as "light" | "dark"}
@@ -31,7 +39,7 @@ const HeroSection = () => {
           />   
         </div>
       )}
-      {prefersReducedMotion && (
+      {(prefersReducedMotion || isMobile) && (
         <div 
           className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
         />
@@ -44,7 +52,7 @@ const HeroSection = () => {
         <div className="relative z-10 pt-32 max-w-3xl mx-auto h-full w-full flex flex-col gap-10 items-center justify-center">
           {/* Social Proof Badge */}
           {heroContent.socialProof && (
-            <div className="border border-primary/20 bg-primary/10 rounded-full text-sm h-8 px-4 flex items-center gap-2">
+            <div className="border border-primary/20 bg-primary/10 rounded-full text-sm sm:text-base h-10 px-5 flex items-center gap-2">
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
               {heroContent.socialProof.badge}
             </div>
@@ -53,13 +61,13 @@ const HeroSection = () => {
           <div className="flex flex-col items-center justify-center gap-5">
             {/* Logo */}
             
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-medium tracking-tighter text-balance text-center text-primary">
+            <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tighter text-balance text-center text-primary leading-[1.1] px-4">
               {heroContent.title}
             </h1>
-            <p className="text-base md:text-lg xl:text-2xl text-center text-white font-medium text-balance leading-relaxed tracking-tight">
+            <p className="text-lg sm:text-xl md:text-xl xl:text-2xl text-center text-white font-medium text-balance leading-relaxed tracking-tight px-4">
               {heroContent.subtitle}
             </p>
-            <p className="text-base md:text-lg xl:text-xl text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
+            <p className="text-base sm:text-lg md:text-lg xl:text-xl text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight px-4">
               {heroContent.support_text}
             </p>
           </div>

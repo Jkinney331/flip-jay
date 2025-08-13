@@ -373,7 +373,7 @@
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(27.39% 0.005 286.03);
-  --accent-foreground:oklch(98.46% 0.002 247.84)
+  --accent-foreground: oklch(98.46% 0.002 247.84);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: oklch(0.269 0 0);
@@ -422,4 +422,68 @@
 /* For colored logos where only lightening is desired in dark mode (avoid full invert) */
 .dark .logo-brighten-dark {
   filter: brightness(1.8) contrast(1.15);
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Improve tap targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better text spacing on mobile */
+  p, li {
+    line-height: 1.6;
+  }
+  
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Landscape orientation support */
+@media (orientation: landscape) and (max-height: 600px) {
+  /* Reduce hero section height in landscape */
+  #hero {
+    min-height: auto;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+  
+  /* Adjust sticky elements */
+  .fixed {
+    position: absolute;
+  }
+  
+  /* Reduce vertical spacing */
+  section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Improve mobile performance */
+@media (max-width: 768px) {
+  /* Disable heavy animations on mobile */
+  .animated-bg,
+  .hyperspeed-canvas {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  /* Optimize scroll performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent iOS zoom on input focus */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
 }

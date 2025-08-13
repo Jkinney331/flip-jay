@@ -51,8 +51,9 @@ export const siteConfig = {
     links: [
       { id: 1, name: "Home", href: "#hero" },
       { id: 2, name: "Teams", href: "#bento" },
-      { id: 3, name: "Platform", href: "#agents" },
-      { id: 4, name: "Pricing", href: "#pricing" },
+                          { id: 3, name: "Platform", href: "#agents" },
+                    { id: 4, name: "Pricing", href: "#pricing" },
+                    // { id: 5, name: "Yield Program", href: "/yield-program" }, // Temporarily hidden for team review
     ],
   },
   hero: {

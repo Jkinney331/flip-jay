@@ -3,6 +3,7 @@
 import { siteConfig } from "@/lib/config";
 import { motion } from "motion/react";
 import React, { useRef, useState } from "react";
+import Link from "next/link";
 
 interface NavItem {
   name: string;
@@ -76,6 +77,11 @@ export function NavMenu() {
     e: React.MouseEvent<HTMLAnchorElement>,
     item: NavItem,
   ) => {
+    // If it's an external link (starts with /), let it navigate normally
+    if (item.href.startsWith('/')) {
+      return; // Let the default Link behavior handle it
+    }
+
     e.preventDefault();
 
     const targetId = item.href.substring(1);
@@ -126,9 +132,15 @@ export function NavMenu() {
                 : "text-primary/60 hover:text-primary"
             } tracking-tight`}
           >
-            <a href={item.href} onClick={(e) => handleClick(e, item)}>
-              {item.name}
-            </a>
+            {item.href.startsWith('/') ? (
+              <Link href={item.href} className="block">
+                {item.name}
+              </Link>
+            ) : (
+              <a href={item.href} onClick={(e) => handleClick(e, item)}>
+                {item.name}
+              </a>
+            )}
           </li>
         ))}
         {isReady && (

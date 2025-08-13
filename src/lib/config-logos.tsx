@@ -6,7 +6,7 @@ export const companyLogos = [
     name: "Unreal Engine",
     logo: (
       <Image
-        src="/unreal.svg"
+        src="/unrealengine.png"
         alt="Unreal Engine logo - gaming and 3D development platform"
         width={80}
         height={20}

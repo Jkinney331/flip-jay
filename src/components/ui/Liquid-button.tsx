@@ -22,9 +22,9 @@ export const LiquidButton = ({
     setMounted(true);
   }, []);
   const sizeStyles = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    sm: "px-4 py-3 text-sm min-h-[44px]",
+    md: "px-6 py-3.5 text-base min-h-[48px]",
+    lg: "px-8 py-4 text-lg min-h-[52px]",
   };
 
   const variantStyles = {
@@ -39,7 +39,8 @@ export const LiquidButton = ({
       className={clsx(
         `relative font-semibold rounded-xl 
          backdrop-blur-md shadow-lg overflow-hidden 
-         transition-all duration-300 hover:scale-105`,
+         transition-all duration-300 hover:scale-105
+         active:scale-95 touch-manipulation`,
         mounted ? "text-black dark:text-white" : "text-black",
         sizeStyles[size],
         variantStyles[variant],

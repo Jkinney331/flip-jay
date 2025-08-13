@@ -178,7 +178,6 @@ const nextConfig: NextConfig = {
     },
     
     // Enable instrumentation hook
-    instrumentationHook: true,
   },
 
   // Compiler optimizations

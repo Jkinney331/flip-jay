@@ -30,7 +30,7 @@ export const DOMAIN_CONTENT = {
       cta: "Start Your Transformation",
       description: "Your complete AI solution in 30 days",
       features: [
-        "Complete 14-day AI solution implementation",
+        "Complete 30-day AI solution implementation",
         "Custom AI model development and training",
         "Integration with your existing systems",
         "Comprehensive documentation and training",
@@ -71,8 +71,8 @@ export const DOMAIN_CONTENT = {
         }
       },
       socialProof: {
-        badge: "Specialized AI Agents",
-        metric: "Custom agents ready in 14 days"
+        badge: "Specialized AI Agents", 
+        metric: ""
       }
     },
     pricing: {
@@ -143,7 +143,7 @@ export const DOMAIN_CONTENT = {
       cta: "Start Your Transformation",
       description: "Your complete AI solution in 30 days",
       features: [
-        "Complete 14-day AI solution implementation",
+        "Complete 30-day AI solution implementation",
         "Custom AI model development and training",
         "Integration with your existing systems",
         "Comprehensive documentation and training",

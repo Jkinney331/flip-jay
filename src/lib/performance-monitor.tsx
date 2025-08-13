@@ -58,9 +58,8 @@ class PerformanceMonitor {
 
   private monitorWebVitals() {
     if ('web-vital' in window || typeof window !== 'undefined') {
-      import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB, onINP }) => {
+      import('web-vitals').then(({ onCLS, onFCP, onLCP, onTTFB, onINP }) => {
         onCLS(this.handleWebVital.bind(this));
-        onFID(this.handleWebVital.bind(this));
         onFCP(this.handleWebVital.bind(this));
         onLCP(this.handleWebVital.bind(this));
         onTTFB(this.handleWebVital.bind(this));

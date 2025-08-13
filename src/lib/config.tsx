@@ -6,6 +6,7 @@ import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { Globe } from "@/components/ui/globe";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { companyLogos } from "./config-logos";
 
 export const Highlight = ({
   children,
@@ -49,8 +50,8 @@ export const siteConfig = {
   nav: {
     links: [
       { id: 1, name: "Home", href: "#hero" },
-      { id: 2, name: "How it Works", href: "#bento" },
-      { id: 3, name: "Features", href: "#agents" },
+      { id: 2, name: "Teams", href: "#bento" },
+      { id: 3, name: "Platform", href: "#agents" },
       { id: 4, name: "Pricing", href: "#pricing" },
     ],
   },
@@ -86,162 +87,7 @@ export const siteConfig = {
     },
   },
   companyShowcase: {
-    companyLogos: [
-      {
-  id: 1,
-  name: "Company 1",
-  logo: (
-    <Image
-      src="/unrealengine.png"
-      alt="Unreal Engine logo - gaming and 3D development platform"
-      width={80}
-      height={20}
-      className="logo-auto logo-brighten-dark"
-    />
-  )
-},
-      {
-  id: 2,
-  name: "Company 2",
-  logo: (
-    <Image
-      src="/aws.svg"
-      alt="Amazon Web Services logo - cloud computing platform"
-      width={80}
-      height={20}
-      className="logo-auto logo-invert-dark"
-    />
-  )
-},
-      {
-  id: 3,
-  name: "Company 3",
-  logo: (
-    <Image
-      src="/loom.svg"
-      alt="Loom logo - video messaging and screen recording platform"
-      width={80}
-      height={20}
-      className=""
-    />
-  )
-},
-      {
-  id: 4,
-  name: "Company 4",
-  logo: (
-    <Image
-      src="/google.svg"
-      alt="Google logo - technology and search company"
-      width={80}
-      height={20}
-      className=""
-    />
-  )
-},
-      {
-  id: 5,
-  name: "Company 5",
-  logo: (
-    <Image
-      src="/microsoft.svg"
-      alt="Microsoft logo - technology and software company"
-      width={320}
-      height={200}
-      className="logo-auto logo-invert-dark"
-    />
-  )
-},
-      {
-  id: 6,
-  name: "Company 6",
-  logo: (
-    <Image
-      src="/openai.svg"
-      alt="OpenAI logo - artificial intelligence research company"
-      width={80}
-      height={20}
-      className="logo-auto logo-invert-dark"
-    />
-  )
-},
-      {
-  id: 7,
-  name: "Company 7",
-  logo: (
-    <Image
-      src="/coinbase.svg"
-      alt="Coinbase logo - cryptocurrency exchange platform"
-      width={80}
-      height={20}
-      className="logo-auto logo-invert-dark"
-    />
-  )
-},
-      {
-  id: 8,
-  name: "Company 8",
-  logo: (
-    <Image
-      src="/shopify.svg"
-      alt="Shopify logo - e-commerce platform"
-      width={80}
-      height={20}
-      className="logo-auto"
-    />
-  )
-},
-      {
-  id: 10,
-  name: "Company 10",
-  logo: (
-    <Image
-      src="/unity.svg"
-      alt="Unity logo - game development platform"
-      width={80}
-      height={20}
-      className="logo-auto logo-invert-dark"
-    />
-  )
-},
-      {
-  id: 11,
-  name: "Company 11",
-  logo: (
-    <Image
-      src="/anthropoid.svg"
-      alt="Anthropic logo - AI safety and research company"
-      width={80}
-      height={20}
-      className="logo-auto logo-invert-dark"
-    />
-  )
-},
-      {
-  id: 12,
-  name: "Company 12",
-  logo: (
-    <>
-      {/* Light mode: original; Dark mode: white wordmark with red logo */}
-      <Image
-        src="/adobe.svg"
-        alt="Adobe logo - creative software and digital media company"
-        width={90}
-        height={24}
-        className="logo-auto block dark:hidden"
-      />
-      <Image
-        src="/adobe-dark.svg"
-        alt="Adobe logo - creative software and digital media company"
-        width={90}
-        height={24}
-        className="logo-auto hidden dark:block"
-      />
-    </>
-  )
-},
-
-    ],
+    companyLogos: companyLogos,
   },
   featureSection: {
     title: "Meet Your Specialized AI Agents",

@@ -56,7 +56,7 @@ const HeroSection = () => {
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-medium tracking-tighter text-balance text-center text-primary">
               {heroContent.title}
             </h1>
-            <p className="text-base md:text-lg xl:text-2xl text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
+            <p className="text-base md:text-lg xl:text-2xl text-center text-white font-medium text-balance leading-relaxed tracking-tight">
               {heroContent.subtitle}
             </p>
             <p className="text-base md:text-lg xl:text-xl text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">

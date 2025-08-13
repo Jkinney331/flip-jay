@@ -52,17 +52,17 @@ const CaseStudiesSection = () => {
         {caseStudies.map((project, index) => (
           <div
             key={index}
-            className="relative rounded-xl overflow-visible group"
+            className="relative rounded-xl overflow-visible"
           >
-            <LiquidCard className="h-full">
-              <CardHeader>
+            <LiquidCard className="h-[520px] flex flex-col">
+              <CardHeader className="flex flex-col h-full">
                 {/* Image */}
-                <div className="w-full h-60 2xl:h-96 relative rounded-lg overflow-hidden mb-4">
+                <div className="w-full h-[240px] relative rounded-lg overflow-hidden mb-4">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                    className="object-cover"
                   />
                 </div>
                 
@@ -70,12 +70,12 @@ const CaseStudiesSection = () => {
                   {project.title}
                 </CardTitle>
                 
-                <CardDescription className="text-sm opacity-80 line-clamp-4 group-hover:line-clamp-none transition-all duration-300 ease-in-out mb-4">
+                <CardDescription className="text-sm opacity-80 mb-4 flex-grow">
                   {project.description}
                 </CardDescription>
 
                 {/* Learn More Button */}
-                <div className="mt-auto pt-4">
+                <div className="mt-auto">
                   <Link href={`/case-studies/${project.slug}`}>
                     <LiquidButton className="w-full text-sm py-2 px-4">
                       Learn More

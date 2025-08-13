@@ -1,13 +1,23 @@
-// const FeatureSection = dynamic(() => import("@/components/sections/feature-section"));
-// const EmpowerCards = dynamic(() => import("@/components/sections/empowercard"));
+import dynamic from "next/dynamic";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import { LazyWebGL } from "@/components/LazyWebGL";
+import { MobileStickyCTA } from "@/components/ui/mobile-sticky-cta";
+
+// Static imports
+import CaseStudiesSection from "@/components/casestudies";
+import ContactSection from "@/components/sections/Contact";
+import HeroSection from "@/components/sections/hero-section";
+import WhyNowSection from "@/components/WhyNowSec";
+import ReportSection from "@/components/sections/report-section";
+import DemoOne from "@/components/sections/secondAiDashboard";
+
+// Dynamic imports
 const BentoSection = dynamic(() => import("@/components/sections/bento-section"));
 const GrowthSection = dynamic(() => import("@/components/sections/growth-section"));
-// const QuoteSection = dynamic(() => import("@/components/sections/quote-section"));
 const CompanyShowcase = dynamic(() => import("@/components/sections/company-showcase"));
 const PricingSection = dynamic(() => import("@/components/sections/pricing-section"));
 const TestimonialSection = dynamic(() => import("@/components/sections/testimonial-section"));
 const FAQSection = dynamic(() => import("@/components/sections/faq-section"));
-
 const FlipTechProcess = dynamic(() => import("@/components/sections/fliptechprocess"));
 const AIAgentsSection = dynamic(() => import("@/components/AIAgentsSection"));
 const GlowCard = dynamic(() => import("@/components/ui/GlowEffectCard"));
@@ -19,63 +29,69 @@ const HeroVariantC = dynamic(() => import("@/components/variants/hero/HeroVarian
 const PricingVariantA = dynamic(() => import("@/components/variants/pricing/PricingVariantA"));
 const PricingVariantB = dynamic(() => import("@/components/variants/pricing/PricingVariantB"));
 
-import CaseStudiesSection from "@/components/casestudies";
-// import { AIDashboard } from "@/components/sections/AiDashboard";
-import ContactSection from "@/components/sections/Contact";
-import HeroSection from "@/components/sections/hero-section";
-import WhyNowSection from "@/components/WhyNowSec";
-import ReportSection from "@/components/sections/report-section";
-import dynamic from "next/dynamic";
-import ErrorBoundary from "@/components/ErrorBoundary";
-import { LazyWebGL } from "@/components/LazyWebGL";
-import DemoOne from "@/components/sections/secondAiDashboard";
-import { MobileStickyCTA } from "@/components/ui/mobile-sticky-cta";
-
 // A/B Testing Components
 import { 
   HeroVariantWrapper, 
-  PricingVariantWrapper, 
+  PricingVariantWrapper
+} from "@/components/VariantWrapper";
+
+export default function Home() {
+  return (
+    <main className="min-h-screen overflow-x-hidden">
+      <ErrorBoundary>
+        <HeroVariantWrapper>
+          {{
+            control: <HeroSection />,
+            variant_a: <HeroVariantA />,
+            variant_b: <HeroVariantB />,
+            variant_c: <HeroVariantC />
+          }}
+        </HeroVariantWrapper>
+      </ErrorBoundary>
       
+      <ErrorBoundary>
         <CompanyShowcase />
       </ErrorBoundary>
       
+      <ErrorBoundary>
         <BentoSection />
       </ErrorBoundary>
       
-      {/* <QuoteSection /> */}
-      {/* <EmpowerCards/> */}
-      {/* <FeatureSection /> */}
-      
+      <ErrorBoundary>
         <AIAgentsSection/>
       </ErrorBoundary>
       
+      <ErrorBoundary>
         <DemoOne/>
       </ErrorBoundary>
-
-        <AIDashboard/>
-      </ErrorBoundary> */}
       
+      <ErrorBoundary>
         <LazyWebGL height="600px" disableOnReducedMotion={false}>
           <GlowCard/>
         </LazyWebGL>
       </ErrorBoundary>
       
-      
+      <ErrorBoundary>
         <GrowthSection />
       </ErrorBoundary>
       
+      <ErrorBoundary>
         <FlipTechProcess/>
       </ErrorBoundary>
       
+      <ErrorBoundary>
         <CaseStudiesSection/>
       </ErrorBoundary>
       
+      <ErrorBoundary>
         <ReportSection/>
       </ErrorBoundary>
       
+      <ErrorBoundary>
         <WhyNowSection/>
       </ErrorBoundary>
       
+      <ErrorBoundary>
         <PricingVariantWrapper>
           {{
             control: <PricingSection />,
@@ -85,24 +101,20 @@ import {
         </PricingVariantWrapper>
       </ErrorBoundary>
       
+      <ErrorBoundary>
         <TestimonialSection />
       </ErrorBoundary>
       
+      <ErrorBoundary>
         <ContactSection/>
       </ErrorBoundary>
       
+      <ErrorBoundary>
         <FAQSection />
       </ErrorBoundary>
       
-      
-
-      
       {/* Mobile Sticky CTA */}
       <MobileStickyCTA />
-      
-
-      
-
     </main>
   );
 }

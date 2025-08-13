@@ -485,19 +485,21 @@ function AIAgentsSection() {
           <div className="flex items-center justify-center gap-4 mt-8 lg:mt-16">
             <button
               aria-label="Previous agent"
-              className="size-14 rounded-full bg-[#f5f5f7] text-[#1d1d1f] grid place-items-center transition-all duration-200 hover:scale-110 hover:bg-[#e8e8ed] shadow-lg"
+              className="size-14 rounded-full relative grid place-items-center transition-all duration-200 hover:scale-110 group overflow-hidden backdrop-blur-md bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
               onClick={() => embla?.scrollPrev()}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5 dark:from-white/10 dark:to-white/5" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="relative z-10">
                 <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
             <button
               aria-label="Next agent"
-              className="size-14 rounded-full bg-[#f5f5f7] text-[#1d1d1f] grid place-items-center transition-all duration-200 hover:scale-110 hover:bg-[#e8e8ed] shadow-lg"
+              className="size-14 rounded-full relative grid place-items-center transition-all duration-200 hover:scale-110 group overflow-hidden backdrop-blur-md bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
               onClick={() => embla?.scrollNext()}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5 dark:from-white/10 dark:to-white/5" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="relative z-10">
                 <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>

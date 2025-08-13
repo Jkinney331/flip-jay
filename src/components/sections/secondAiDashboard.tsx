@@ -770,7 +770,10 @@ export default function DemoOne() {
       subtitle="Complete Intelligence Suite"
       description="Experience the full power of our AI platform with four integrated centers working together seamlessly to deliver unmatched intelligence and automation."
       primaryButtonText="Book Demo"
-      onPrimaryClick={() => console.log("Book demo clicked")}
+      onPrimaryClick={() => {
+        const element = document.getElementById('contact');
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }}
     />
   );
 }

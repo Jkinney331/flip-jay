@@ -5,9 +5,9 @@ export const DOMAIN_CONTENT = {
   'fliptechpro.com': {
     hero: {
       title: "Where Vision Meets Velocity",
-      subtitle: "AI Teams and Departments Built for Scale",
+      subtitle: "Built for Scale and Speed",
       description: "From chaos to production in 30 days",
-      support_text: "Transform your business with cutting-edge AI solutions, delivered with unmatched speed and expertise.",
+      support_text: "",
       cta: {
         primary: {
           text: "Book Demo",
@@ -15,7 +15,7 @@ export const DOMAIN_CONTENT = {
         }
       },
       socialProof: {
-        badge: "Specialized AI Departments",
+        badge: "Specialized AI Teams",
         metric: ""
       }
     },
@@ -117,23 +117,19 @@ export const DOMAIN_CONTENT = {
   'localhost': {
     // Use SMB content for development
     hero: {
-      title: "Where Vision Meets Velocity (Dev)",
-      subtitle: "AI Solutions Built for Growing Businesses",
+      title: "Where Vision Meets Velocity",
+      subtitle: "Built for Scale and Speed",
       description: "From idea to production in 14 days",
-      support_text: "Transform your small business with cutting-edge AI solutions, delivered with unmatched speed and expertise. Join 500+ businesses already growing with AI.",
+      support_text: "",
       cta: {
         primary: {
-          text: "Start Your AI Journey",
+          text: "Book Free Demo",
           href: "#contact"
-        },
-        secondary: {
-          text: "View Success Stories",
-          href: "#testimonials"
         }
       },
       socialProof: {
-        badge: "500+ Small Businesses Transformed",
-        metric: "Average 300% ROI in 90 days"
+        badge: "Specialized AI Teams",
+        metric: ""
       }
     },
     pricing: {

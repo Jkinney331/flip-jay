@@ -119,7 +119,7 @@ export function Navbar() {
         >
           <div className="flex h-[56px] items-center justify-between p-4">
             <Link href="/" className="flex items-center gap-3 w-52">
-              <span class="text-lg font-semibold text-primary">FlipTech Pro</span>
+              <span className="text-lg font-semibold text-primary">FlipTech Pro</span>
             </Link>
 
             <NavMenu />
@@ -141,9 +141,12 @@ export function Navbar() {
               <div className="flex items-center space-x-6">
                 <LiquidButton 
                   className="md:block hidden cursor-pointer" 
-                  onClick={() => window.open("#", "_self")}
+                  onClick={() => {
+                    const element = document.getElementById('contact');
+                    element?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
-                  Book Demo
+                  Contact Us
                 </LiquidButton>
               </div>
               <ThemeToggle />
@@ -187,7 +190,7 @@ export function Navbar() {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                   <Link href="/" className="flex items-center gap-3">
-                    <span class="text-base font-semibold text-primary">FlipTech Pro</span>
+                    <span className="text-base font-semibold text-primary">FlipTech Pro</span>
                   </Link>
                   <button
                     onClick={toggleDrawer}
@@ -251,12 +254,16 @@ export function Navbar() {
 
                 {/* Action buttons */}
                 <div className="flex flex-col gap-2">
-                  <Link
-                    href="#"
+                  <button
+                    onClick={() => {
+                      const element = document.getElementById('contact');
+                      element?.scrollIntoView({ behavior: 'smooth' });
+                      setIsDrawerOpen(false);
+                    }}
                     className="bg-secondary h-8 flex items-center justify-center text-sm font-normal tracking-wide rounded-full text-primary-foreground dark:text-secondary-foreground w-full px-4 shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_3px_3px_-1.5px_rgba(16,24,40,0.06),0_1px_1px_rgba(16,24,40,0.08)] border border-white/[0.12] hover:bg-secondary/80 transition-all ease-out active:scale-95"
                   >
-                    Book Demo
-                  </Link>
+                    Contact Us
+                  </button>
                 </div>
               </div>
             </motion.div>

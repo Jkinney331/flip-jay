@@ -61,7 +61,7 @@ export const DOMAIN_CONFIG: Record<string, DomainConfig> = {
     domain: 'localhost',
     audience: 'smb',
     branding: {
-      name: 'FlipTech Pro (Dev)',
+      name: 'FlipTech Pro',
       tagline: 'AI Solutions for Growing Businesses',
       primaryColor: '#3B82F6',
       accentColor: '#10B981',

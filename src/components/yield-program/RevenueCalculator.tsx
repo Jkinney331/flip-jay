@@ -44,7 +44,7 @@ export function RevenueCalculator() {
       finance: 1.8,
       retail: 1.0,
       manufacturing: 1.3,
-    }[calculatorState.industry];
+    }[calculatorState.industry] || 1.0;
 
     const sizeMultiplier = calculatorState.companySize / 100;
     const volumeMultiplier = calculatorState.dataVolume / 1000;

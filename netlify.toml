@@ -6,6 +6,10 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
 
+# Next.js plugin configuration
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

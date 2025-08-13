@@ -10,6 +10,8 @@ import HeroSection from "@/components/sections/hero-section";
 import WhyNowSection from "@/components/WhyNowSec";
 import ReportSection from "@/components/sections/report-section";
 import DemoOne from "@/components/sections/secondAiDashboard";
+import FooterSection from "@/components/sections/footer-section";
+import CTASection from "@/components/sections/cta-section";
 
 // Dynamic imports
 const BentoSection = dynamic(() => import("@/components/sections/bento-section"));
@@ -111,6 +113,14 @@ export default function Home() {
       
       <ErrorBoundary>
         <FAQSection />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <CTASection />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <FooterSection />
       </ErrorBoundary>
       
       {/* Mobile Sticky CTA */}

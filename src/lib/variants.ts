@@ -69,7 +69,7 @@ export const pricingVariants = {
     subtitle: "Simple, transparent pricing. No hidden fees, no surprises.",
     badge: "Most Popular",
     features: [
-      "Complete 14-day AI solution implementation",
+      "Complete AI solution implementation in 30 days",
       "Custom AI model development and training",
       "Integration with your existing systems",
       "Comprehensive documentation and training",
@@ -92,7 +92,7 @@ export const pricingVariants = {
       "Risk-free with money-back guarantee",
     ],
     features: [
-      "Complete AI transformation in 14 days",
+      "Complete AI transformation in 30 days",
       "Custom AI models tailored to your business",
       "Full system integration and deployment",
       "Comprehensive team training program",

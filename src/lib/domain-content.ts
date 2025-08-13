@@ -28,7 +28,7 @@ export const DOMAIN_CONTENT = {
       badge: "Most Popular",
       guarantee: "30-day money-back guarantee",
       cta: "Start Your Transformation",
-      description: "Your complete AI solution in 14 days",
+      description: "Your complete AI solution in 30 days",
       features: [
         "Complete 14-day AI solution implementation",
         "Custom AI model development and training",
@@ -141,7 +141,7 @@ export const DOMAIN_CONTENT = {
       badge: "Most Popular",
       guarantee: "30-day money-back guarantee",
       cta: "Start Your Transformation",
-      description: "Your complete AI solution in 14 days",
+      description: "Your complete AI solution in 30 days",
       features: [
         "Complete 14-day AI solution implementation",
         "Custom AI model development and training",

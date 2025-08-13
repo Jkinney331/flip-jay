@@ -20,7 +20,7 @@ export const SavingsCalculator: React.FC<SavingsCalculatorProps> = ({ className 
 
   return (
     <motion.div
-      className={`bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl border border-green-200 dark:border-green-800 p-6 ${className}`}
+      className={`${className}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.4 }}
@@ -45,7 +45,7 @@ export const SavingsCalculator: React.FC<SavingsCalculatorProps> = ({ className 
               type="number"
               value={monthlyRevenue}
               onChange={(e) => setMonthlyRevenue(Number(e.target.value))}
-              className="max-w-32 pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
               placeholder="50000"
             />
           </div>
@@ -71,40 +71,40 @@ export const SavingsCalculator: React.FC<SavingsCalculatorProps> = ({ className 
         </div>
       </div>
 
-      {/* Results - Fixed Grid System */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+      {/* Results Grid */}
+      <div className="grid grid-cols-3 gap-3 w-full">
         <motion.div
-          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 min-h-[120px]"
+          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
-          <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-400 mx-auto mb-2" />
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Monthly<br/>Savings</p>
-          <p className="text-xl font-bold text-green-600 dark:text-green-400 leading-tight">
+          <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-400 mb-2" />
+          <p className="text-xs text-gray-600 dark:text-gray-400">Monthly<br/>Savings</p>
+          <p className="text-lg font-bold text-green-600 dark:text-green-400">
             ${potentialSavings.toLocaleString()}
           </p>
         </motion.div>
 
         <motion.div
-          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 min-h-[120px]"
+          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
-          <DollarSign className="w-6 h-6 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Annual<br/>Savings</p>
-          <p className="text-xl font-bold text-blue-600 dark:text-blue-400 leading-tight">
+          <DollarSign className="w-6 h-6 text-blue-600 dark:text-blue-400 mb-2" />
+          <p className="text-xs text-gray-600 dark:text-gray-400">Annual<br/>Savings</p>
+          <p className="text-lg font-bold text-blue-600 dark:text-blue-400">
             ${annualSavings.toLocaleString()}
           </p>
         </motion.div>
 
         <motion.div
-          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 min-h-[120px]"
+          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
-          <Clock className="w-6 h-6 text-purple-600 dark:text-purple-400 mx-auto mb-2" />
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">ROI</p>
-          <p className="text-xl font-bold text-purple-600 dark:text-purple-400 leading-tight">
+          <Clock className="w-6 h-6 text-purple-600 dark:text-purple-400 mb-2" />
+          <p className="text-xs text-gray-600 dark:text-gray-400">ROI</p>
+          <p className="text-lg font-bold text-purple-600 dark:text-purple-400">
             {roi.toFixed(0)}%
           </p>
         </motion.div>

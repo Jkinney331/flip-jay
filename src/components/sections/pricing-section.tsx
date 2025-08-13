@@ -4,7 +4,7 @@ import { SectionHeader } from "@/components/section-header";
 import { siteConfig } from "@/lib/config";
 import { motion } from "motion/react";
 import { LiquidButton } from "../ui/Liquid-button";
-import { Shield, Users, Star } from "lucide-react";
+import { Shield, Star, TrendingUp } from "lucide-react";
 import { SavingsCalculator } from "../ui/SavingCalculator";
 import { usePricingContent, useDomainContent } from "@/hooks/useDomainContent";
 
@@ -64,7 +64,7 @@ const PricingSection = () => {
           <div className="mb-6 flex flex-col items-center pt-4">
             <div className="flex items-baseline gap-2">
               <PriceDisplay price={pricingContent.price} />
-              <span className="text-lg text-muted-foreground">/project</span>
+              <span className="text-lg text-muted-foreground">/Month</span>
             </div>
             
             {/* Original Price & Savings */}
@@ -79,12 +79,11 @@ const PricingSection = () => {
               </div>
             )}
             
-            <p className="text-sm text-muted-foreground mt-2 text-center">{pricingContent.description}</p>
-            <p className="text-xs text-green-600 mt-1 text-center font-medium">{pricingContent.guarantee}</p>
+            <p className="text-sm text-muted-foreground mt-2 text-center">Your complete AI solution in 30 days</p>
           </div>
 
           {/* Features List */}
-          <ul className="space-y-3 text-sm mb-8 flex flex-col items-start justify-start">
+          <ul className="space-y-3 text-sm mb-8 flex flex-col items-center justify-center">
             {pricingContent.features.map((feature, index) => (
               <li key={index} className="flex items-start gap-3 text-left w-full">
                 <div className="w-5 h-5 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center mt-0.5 flex-shrink-0">
@@ -114,17 +113,11 @@ const PricingSection = () => {
             <LiquidButton className="cursor-pointer w-full">
               {pricingContent.cta}
             </LiquidButton>
-            <div className="flex items-center gap-4 text-sm">
-              <div className="flex items-center gap-1 text-green-600">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="font-medium">
-                  {isSmb ? "Only 3 spots left this month" : "Limited enterprise slots available"}
-                </span>
-              </div>
-              <div className="flex items-center gap-1 text-blue-600">
-                <Shield className="w-4 h-4" />
-                <span>{isSmb ? "30-day guarantee" : "SLA guarantee"}</span>
-              </div>
+            <div className="flex items-center gap-1 text-green-600 text-sm">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="font-medium">
+                {isSmb ? "Only 3 spots left this month" : "Limited enterprise slots available"}
+              </span>
             </div>
           </div>
         </div>
@@ -135,19 +128,22 @@ const PricingSection = () => {
         </div>
       </div>
 
-      {/* Row 2 - Trust Badges */}
-      <div className="grid grid-cols-3 gap-3 w-full max-w-3xl">
-        <div className="p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-700 text-center">
-          <Shield className="w-5 h-5 mx-auto text-green-600" />
-          <p className="text-xs mt-2">{isSmb ? "30-Day Guarantee" : "SLA Guarantee"}</p>
+      {/* Row 2 - Trust Badges (Only 3) with green styling */}
+      <div className="grid grid-cols-3 gap-4 w-full max-w-xl">
+        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
+          <Shield className="w-6 h-6 mx-auto text-green-600 dark:text-green-400 mb-2" />
+          <p className="text-sm font-semibold text-gray-900 dark:text-white">30-Day</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">Guarantee</p>
         </div>
-        <div className="p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-700 text-center">
-          <Users className="w-5 h-5 mx-auto text-blue-600" />
-          <p className="text-xs mt-2">{isSmb ? "500+ Clients" : "Fortune 500 Trusted"}</p>
+        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
+          <Star className="w-6 h-6 mx-auto text-yellow-600 dark:text-yellow-400 mb-2" />
+          <p className="text-sm font-semibold text-gray-900 dark:text-white">4.9/5</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">Rating</p>
         </div>
-        <div className="p-4 rounded-xl bg-white/70 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-700 text-center">
-          <Star className="w-5 h-5 mx-auto text-yellow-500" />
-          <p className="text-xs mt-2">4.9/5 Rating</p>
+        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
+          <TrendingUp className="w-6 h-6 mx-auto text-purple-600 dark:text-purple-400 mb-2" />
+          <p className="text-sm font-semibold text-gray-900 dark:text-white">72%</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">ROI</p>
         </div>
       </div>
     </section>

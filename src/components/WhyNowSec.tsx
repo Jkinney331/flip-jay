@@ -7,22 +7,22 @@ import { motion } from "motion/react";
 
 const reasons = [
   {
-    title: "AI Market Explosion",
+    title: "No Agency Overhead",
     description:
-      "Every day you wait, your competitors get stronger. The AI revolution isn't coming—it's here, and early movers are already capturing market share you might never get back.",
-    icon: <TrendingUp size={28} className="text-pink-500 dark:text-pink-400" />,
+      "You're not paying for account managers—just senior hands-on work at $75/hr.",
+    icon: <TrendingUp size={28} className="text-green-500 dark:text-green-400" />,
   },
   {
-    title: "Implementation Gap",
+    title: "Flexible Engagement",
     description:
-      "You know you need AI, but where do you start? Most companies are stuck in analysis paralysis. We turn your ideas into working solutions in 14 days—not months of meetings and maybes.",
-    icon: <Puzzle size={28} className="text-yellow-500 dark:text-yellow-400" />,
+      "2 hours or 2 months; no retainers or minimums.",
+    icon: <Puzzle size={28} className="text-blue-500 dark:text-blue-400" />,
   },
   {
-    title: "Accelerated ROI",
+    title: "Real Human, Real Fast",
     description:
-      "For less than the cost of one employee, get an entire AI system that works 24/7. See real returns in weeks while others are still writing proposals. Your future starts at $9,500.",
-    icon: <Rocket size={28} className="text-green-500 dark:text-green-400" />,
+      "I answer in hours, not days—Slack, email, text, or a quick call. Yes, I still pick up the phone.",
+    icon: <Rocket size={28} className="text-purple-500 dark:text-purple-400" />,
   },
 ];
 
@@ -30,7 +30,7 @@ const WhyNowSection = () => {
   return (
     <section className="w-full px-6 py-20 max-w-full 2xl:px-24 mx-auto cursor-pointer">
       <h2 className="text-3xl font-bold text-center mb-12 dark:text-white text-gray-900">
-        Why Now Is The Time
+        Why Now?
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -52,12 +52,12 @@ const WhyNowSection = () => {
               disabled={false}
             />
 
-            <div className="relative z-10 rounded-xl border p-6 backdrop-blur-md bg-white/60 dark:bg-zinc-900/70 border-gray-300 dark:border-white/20 shadow-lg">
+            <div className="relative z-10 rounded-xl border p-6 backdrop-blur-md bg-white/60 dark:bg-zinc-900/70 border-gray-300 dark:border-white/20 shadow-lg h-full min-h-[200px] flex flex-col">
               <div className="mb-4">{item.icon}</div>
               <h3 className="text-lg font-semibold mb-2 dark:text-white text-gray-900">
                 {item.title}
               </h3>
-              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed flex-grow">
                 {item.description}
               </p>
             </div>

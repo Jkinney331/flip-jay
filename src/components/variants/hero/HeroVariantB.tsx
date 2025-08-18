@@ -2,7 +2,7 @@
 
 import React from "react";
 import { LiquidButton } from "../../ui/Liquid-button";
-import Hyperspeed from "../../ui/hyperspeed-component";
+import { HyperspeedComponent } from "../../ui/hyperspeed-full";
 import { hyperspeedPresets } from "@/components/ui/hyperspeed";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { useTheme } from "next-themes";
@@ -29,16 +29,15 @@ const HeroVariantB = () => {
   return (
     <section id="hero" className="w-full relative mt-4">
       {isMounted && (
-        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] absolute top-0 left-0 overflow-hidden">
-          <Hyperspeed 
-            theme={theme as "light" | "dark"}
+        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] absolute top-0 left-0 overflow-hidden z-0">
+          <HyperspeedComponent 
             effectOptions={hyperspeedPresets(theme as "light" | "dark").one}
           />   
         </div>
       )}
       {prefersReducedMotion && (
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
+          className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] z-0"
         />
       )}
       <div className="relative flex flex-col items-center w-full px-6">
@@ -79,7 +78,7 @@ const HeroVariantB = () => {
               {config.cta.primary.text}
             </LiquidButton>
             <button
-              onClick={() => window.location.href = config.cta.secondary.href}
+              onClick={() => window.open('https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call', '_blank')}
               className="h-[44px] flex items-center justify-center px-6 text-sm font-normal tracking-wide text-primary rounded-full transition-all ease-out active:scale-95 bg-white dark:bg-background border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white/80 dark:hover:bg-background/80"
             >
               {config.cta.secondary.text}

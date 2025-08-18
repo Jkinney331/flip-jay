@@ -586,8 +586,8 @@ interface AgentDashboardShowcaseProps {
 const AgentDashboardShowcase: React.FC<AgentDashboardShowcaseProps> = ({
   title = "AI Agent Platform",
   subtitle = "Complete Intelligence Suite",
-  description = "Experience the full power of our AI platform with four integrated centers working together seamlessly.",
-  primaryButtonText = "Book Demo",
+  description = "I built an AI platform with four integrated centers that work together to deliver fast, accurate intelligence and automation.",
+  primaryButtonText = "Book a Call",
   secondaryButtonText = "Learn More",
   onPrimaryClick = () => console.log("Primary button clicked"),
   onSecondaryClick = () => console.log("Secondary button clicked")
@@ -640,7 +640,7 @@ const AgentDashboardShowcase: React.FC<AgentDashboardShowcaseProps> = ({
             >
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               <span className="text-sm font-medium text-foreground">
-                Live Platform Demo
+                Project Highlight
               </span>
             </motion.div>
 
@@ -768,11 +768,10 @@ export default function DemoOne() {
     <AgentDashboardShowcase
       title="AI Agent Platform"
       subtitle="Complete Intelligence Suite"
-      description="Experience the full power of our AI platform with four integrated centers working together seamlessly to deliver unmatched intelligence and automation."
-      primaryButtonText="Book Demo"
+      description="I built an AI platform with four integrated centers that work together to deliver fast, accurate intelligence and automation."
+      primaryButtonText="Book a Call"
       onPrimaryClick={() => {
-        const element = document.getElementById('contact');
-        element?.scrollIntoView({ behavior: 'smooth' });
+        window.open("https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call", "_blank", "noopener,noreferrer");
       }}
     />
   );

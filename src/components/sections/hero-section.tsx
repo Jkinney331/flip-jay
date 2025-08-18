@@ -1,106 +1,101 @@
-'use client'
-// import { HeroVideoSection } from "@/components/sections/hero-video-section";
-import { siteConfig } from "@/lib/config";
-// import Link from "next/link";
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "motion/react";
 import { LiquidButton } from "../ui/Liquid-button";
-import Hyperspeed from "../ui/hyperspeed-component";
-import { hyperspeedPresets } from "@/components/ui/hyperspeed";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
-import { useTheme } from "next-themes";
-import { useHeroContent, useDomainContent } from "@/hooks/useDomainContent";
+import { useDomainContent } from "@/hooks/useDomainContent";
 
 const HeroSection = () => {
-  const heroContent = useHeroContent();
-  const { config } = useDomainContent();
-  const prefersReducedMotion = useReducedMotion();
-  const { theme } = useTheme();
-  const [isMounted, setIsMounted] = React.useState(false);
-  const [isMobile, setIsMobile] = React.useState(false);
+  const heroData = useDomainContent().getContent('hero');
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  
+  const rotatingWords = ["Web Development", "AI Integrations", "UX/UI Design", "QA", "Mobile Development", "Maintenance", "Mobile Design", "Marketing"];
 
-  React.useEffect(() => {
-    setIsMounted(true);
-    // Detect mobile device
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % rotatingWords.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section id="hero" className="w-full relative mt-4">
-      {isMounted && !isMobile && !prefersReducedMotion && (
-        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] absolute top-0 left-0 overflow-hidden">
-          <Hyperspeed 
-            theme={theme as "light" | "dark"}
-            effectOptions={hyperspeedPresets(theme as "light" | "dark").one}
-          />   
-        </div>
-      )}
-      {(prefersReducedMotion || isMobile) && (
-        <div 
-          className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
-        />
-      )}
-      <div className="relative flex flex-col items-center w-full px-6">
-        {/* <div className="absolute inset-0">
-          <div className="absolute inset-0 -z-10 h-[600px] md:h-[800px] w-full animated-bg rounded-b-xl" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-zinc-900 pt-32">
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-6"
+        >
+          <span className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            Available for work
+          </span>
+        </motion.div>
 
-        </div> */}
-        <div className="relative z-10 pt-32 max-w-3xl mx-auto h-full w-full flex flex-col gap-10 items-center justify-center">
-          {/* Social Proof Badge */}
-          {heroContent.socialProof && (
-            <div className="border border-primary/20 bg-primary/10 rounded-full text-sm sm:text-base h-10 px-5 flex items-center gap-2">
-              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              {heroContent.socialProof.badge}
-            </div>
-          )}
-          
-          <div className="flex flex-col items-center justify-center gap-5">
-            {/* Logo */}
-            
-            <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tighter text-balance text-center text-primary leading-[1.1] px-4">
-              {heroContent.title}
-            </h1>
-            <p className="text-lg sm:text-xl md:text-xl xl:text-2xl text-center text-white font-medium text-balance leading-relaxed tracking-tight px-4">
-              {heroContent.subtitle}
-            </p>
-            <p className="text-base sm:text-lg md:text-lg xl:text-xl text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight px-4">
-              {heroContent.support_text}
-            </p>
-          </div>
-          
-          <div className="flex items-center gap-2.5 flex-wrap justify-center mb-2">
-            <LiquidButton 
-              className="cursor-pointer min-h-[44px] min-w-[120px] text-base px-6 py-3" 
-              onClick={() => window.location.href = heroContent.cta.primary.href}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-5xl md:text-7xl lg:text-8xl font-bold text-black dark:text-white mb-6 leading-tight"
+        >
+          On-Demand{" "}
+          <span className="inline-block">
+            <motion.span
+              key={currentWordIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="text-blue-600 dark:text-blue-400"
             >
-              {heroContent.cta.primary.text}
-            </LiquidButton>
-            
-            {(heroContent?.cta as any)?.secondary && (
-              <button
-                onClick={() => window.location.href = (heroContent?.cta as any)?.secondary?.href}
-                className="h-10 flex items-center justify-center w-32 px-5 text-sm font-normal tracking-wide text-primary rounded-full transition-all ease-out active:scale-95 bg-white dark:bg-background border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white/80 dark:hover:bg-background/80"
-              >
-                {(heroContent?.cta as any)?.secondary?.text}
-              </button>
-            )}
-          </div>
-          
-          {/* Domain-specific metric */}
-          {heroContent.socialProof?.metric && (
-            <div className="text-sm text-muted-foreground text-center">
-              {heroContent.socialProof.metric}
-            </div>
-          )}
-        </div>
+              {rotatingWords[currentWordIndex]}
+            </motion.span>
+          </span>
+          , Done Right
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-xl md:text-2xl text-black dark:text-gray-300 mb-12 max-w-3xl mx-auto"
+        >
+          From quick fixes to complete builds, I deliver. Whether you need a bug squashed or an MVP launched, I'm your guy. Hourly or fixed-fee—your project, your choice.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <button
+            onClick={() => {
+              window.open("https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call", "_blank", "noopener,noreferrer");
+            }}
+            className="px-8 py-4 text-lg font-medium bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all transform hover:scale-105"
+          >
+            Book a Call
+          </button>
+          <button
+            onClick={() => {
+              const element = document.getElementById("contact");
+              element?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="px-8 py-4 text-lg font-medium bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-all transform hover:scale-105"
+          >
+            Start Your Project
+          </button>
+        </motion.div>
       </div>
-      {/* <HeroVideoSection /> */}
     </section>
   );
-}
+};
 
 export default HeroSection;

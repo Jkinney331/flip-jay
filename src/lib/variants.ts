@@ -8,7 +8,7 @@ export const heroVariants = {
     cta: {
       primary: {
         text: "Book Demo",
-        href: "#contact",
+        href: "https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call",
       },
       secondary: {
         text: "View Portfolio",
@@ -82,26 +82,26 @@ export const pricingVariants = {
     ],
   },
   variant_a: {
-    title: "Transform Your Business for Less Than $1,000/Day",
-    subtitle: "Get enterprise-level AI solutions at a fraction of the cost of building in-house.",
+    title: "Simple, transparent pricing",
+    subtitle: "No contracts, no minimums, no nonsense",
     badge: "Best Value",
     valueProps: [
-      "Save $200K+ vs hiring AI team",
-      "10x faster than traditional development",
-      "Guaranteed ROI within 90 days",
-      "Risk-free with money-back guarantee",
+      "Save vs hiring full-time developer",
+      "10x faster than traditional hiring",
+      "Start and stop as needed",
+      "Risk-free with flexible terms",
     ],
     features: [
-      "Complete AI transformation in 30 days",
-      "Custom AI models tailored to your business",
-      "Full system integration and deployment",
-      "Comprehensive team training program",
-      "24/7 support for 3 months",
-      "Performance monitoring and optimization",
-      "AI Control Dashboard with analytics",
+      "Pay only for time used",
+      "Detailed time tracking",
+      "Weekly invoicing",
+      "No minimum hours",
+      "Pause anytime",
+      "Flexible scheduling",
+      "Direct access to senior developer",
       "100% satisfaction guarantee",
-      "Free updates and improvements",
-      "Direct access to AI experts",
+      "Code reviews included",
+      "Documentation included",
     ],
   },
   variant_b: {
@@ -109,7 +109,7 @@ export const pricingVariants = {
     subtitle: "See exactly how much you'll save with our AI solutions.",
     cta: "Book Demo",
     badge: "ROI Focused",
-    description: "Use our calculator to see your potential savings and return on investment with FlipTech Pro AI solutions.",
+    description: "Use our calculator to see your potential savings and return on investment with FlipTech AI solutions.",
   },
 };
 
@@ -119,7 +119,7 @@ export const ctaVariants = {
     subtitle: "Ready to transform your business with AI?",
     button: {
       text: "Book Demo",
-      href: "#contact",
+      href: "https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call",
     },
     subtext: "No obligations, no questions asked",
   },
@@ -128,7 +128,7 @@ export const ctaVariants = {
     subtitle: "While you're thinking, they're implementing AI and gaining market advantage",
     button: {
       text: "Start Today - Limited Spots",
-      href: "#contact",
+      href: "https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call",
     },
     subtext: "Only 3 spots available this month",
     urgencyBadge: "Limited Time",

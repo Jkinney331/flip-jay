@@ -20,7 +20,7 @@ const TestimonialSection = () => {
           What Our Clients Say
         </h2>
         <p className="text-muted-foreground text-center text-balance font-medium">
-          Hear from businesses that have transformed their operations with FlipTech {`Pro's`} AI agent teams.
+          Hear from businesses that have transformed their operations
         </p>
 
         {/* ✅ Glowing Testimonial Card */}

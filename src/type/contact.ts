@@ -3,7 +3,10 @@
 export interface ContactFormData {
   name: string;
   email: string;
-  company?: string;
+  company: string;
+  projectType: string;
+  timeline: string;
+  budgetRange: string;
   message: string;
 }
 
@@ -17,7 +20,6 @@ export interface ContactSubmission extends ContactFormData {
 export interface ContactFormResponse {
   success: boolean;
   message: string;
-  submissionId?: string;
 }
 
 export interface EmailConfig {

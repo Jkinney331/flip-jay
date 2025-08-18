@@ -8,7 +8,7 @@ import CaseStudiesSection from "@/components/casestudies";
 import ContactSection from "@/components/sections/Contact";
 import HeroSection from "@/components/sections/hero-section";
 import WhyNowSection from "@/components/WhyNowSec";
-import ReportSection from "@/components/sections/report-section";
+import PricingCalculator from "@/components/sections/report-section";
 import DemoOne from "@/components/sections/secondAiDashboard";
 import FooterSection from "@/components/sections/footer-section";
 import CTASection from "@/components/sections/cta-section";
@@ -21,7 +21,7 @@ const PricingSection = dynamic(() => import("@/components/sections/pricing-secti
 const TestimonialSection = dynamic(() => import("@/components/sections/testimonial-section"));
 const FAQSection = dynamic(() => import("@/components/sections/faq-section"));
 const FlipTechProcess = dynamic(() => import("@/components/sections/fliptechprocess"));
-const AIAgentsSection = dynamic(() => import("@/components/AIAgentsSection"));
+const ServicesSection = dynamic(() => import("@/components/AIAgentsSection"));
 const GlowCard = dynamic(() => import("@/components/ui/GlowEffectCard"));
 
 // A/B Testing Variant Components
@@ -60,7 +60,7 @@ export default function Home() {
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <AIAgentsSection/>
+        <ServicesSection/>
       </ErrorBoundary>
       
       <ErrorBoundary>
@@ -86,7 +86,7 @@ export default function Home() {
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <ReportSection/>
+        <PricingCalculator/>
       </ErrorBoundary>
       
       <ErrorBoundary>

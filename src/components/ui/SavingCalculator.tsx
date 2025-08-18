@@ -9,112 +9,76 @@ interface SavingsCalculatorProps {
 }
 
 export const SavingsCalculator: React.FC<SavingsCalculatorProps> = ({ className }) => {
-  const [monthlyRevenue, setMonthlyRevenue] = useState(50000);
-  const [currentEfficiency, setCurrentEfficiency] = useState(70);
+  const [hours, setHours] = useState(40);
+  const [teamSize, setTeamSize] = useState(1);
 
-  // Calculate potential savings
-  const efficiencyGain = 100 - currentEfficiency;
-  const potentialSavings = (monthlyRevenue * efficiencyGain) / 100;
-  const annualSavings = potentialSavings * 12;
-  const roi = ((annualSavings - 9500) / 9500) * 100;
+  // Calculate costs
+  const flipTechCost = hours * 75; // $75/hour
+  const traditionalCost = hours * 150 * teamSize; // $150/hour for multiple people
+  const savings = traditionalCost - flipTechCost;
+  const savingsPercentage = ((savings / traditionalCost) * 100).toFixed(0);
 
   return (
-    <motion.div
-      className={`${className}`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.4 }}
-    >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-          <Calculator className="w-5 h-5 text-green-600 dark:text-green-400" />
-        </div>
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-          ROI Calculator
-        </h3>
-      </div>
-
-      <div className="space-y-4 mb-6">
+    <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+        ROI Calculator
+      </h3>
+      
+      <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Monthly Revenue
-          </label>
-          <div className="relative">
-            <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input
-              type="number"
-              value={monthlyRevenue}
-              onChange={(e) => setMonthlyRevenue(Number(e.target.value))}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              placeholder="50000"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Current Efficiency (%)
+            Hours Needed
           </label>
           <input
             type="range"
-            min="50"
-            max="95"
-            value={currentEfficiency}
-            onChange={(e) => setCurrentEfficiency(Number(e.target.value))}
-            className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+            min="10"
+            max="200"
+            value={hours}
+            onChange={(e) => setHours(Number(e.target.value))}
+            className="w-full"
           />
-          <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
-            <span>50%</span>
-            <span>{currentEfficiency}%</span>
-            <span>95%</span>
+          <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+            {hours} hours
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Traditional Team Size
+          </label>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value={teamSize}
+            onChange={(e) => setTeamSize(Number(e.target.value))}
+            className="w-full"
+          />
+          <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+            {teamSize} developer{teamSize > 1 ? 's' : ''}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+          <div className="text-center">
+            <div className="text-2xl font-bold text-blue-600">${flipTechCost.toLocaleString()}</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">FlipTech Dev</div>
+            <div className="text-xs text-gray-500">$75/hour</div>
+          </div>
+          
+          <div className="text-center">
+            <div className="text-2xl font-bold text-red-600">${traditionalCost.toLocaleString()}</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">Traditional Agency</div>
+            <div className="text-xs text-gray-500">$150/hour × {teamSize}</div>
+          </div>
+          
+          <div className="text-center">
+            <div className="text-2xl font-bold text-green-600">${savings.toLocaleString()}</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">You Save</div>
+            <div className="text-xs text-gray-500">{savingsPercentage}% less</div>
           </div>
         </div>
       </div>
-
-      {/* Results Grid */}
-      <div className="grid grid-cols-3 gap-3 w-full">
-        <motion.div
-          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-        >
-          <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-400 mb-2" />
-          <p className="text-xs text-gray-600 dark:text-gray-400">Monthly<br/>Savings</p>
-          <p className="text-lg font-bold text-green-600 dark:text-green-400">
-            ${potentialSavings.toLocaleString()}
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-        >
-          <DollarSign className="w-6 h-6 text-blue-600 dark:text-blue-400 mb-2" />
-          <p className="text-xs text-gray-600 dark:text-gray-400">Annual<br/>Savings</p>
-          <p className="text-lg font-bold text-blue-600 dark:text-blue-400">
-            ${annualSavings.toLocaleString()}
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="flex flex-col items-center justify-center text-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Clock className="w-6 h-6 text-purple-600 dark:text-purple-400 mb-2" />
-          <p className="text-xs text-gray-600 dark:text-gray-400">ROI</p>
-          <p className="text-lg font-bold text-purple-600 dark:text-purple-400">
-            {roi.toFixed(0)}%
-          </p>
-        </motion.div>
-      </div>
-
-      <div className="mt-6 p-4 bg-green-100 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-        <p className="text-sm text-green-800 dark:text-green-200 text-center">
-          <strong>Investment pays for itself in just {Math.ceil(9500 / potentialSavings)} months!</strong>
-        </p>
-      </div>
-    </motion.div>
+    </div>
   );
 }; 

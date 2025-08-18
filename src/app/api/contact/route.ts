@@ -11,6 +11,9 @@ const ContactFormSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100, 'Name is too long'),
   email: z.string().email('Invalid email format').max(200, 'Email is too long'),
   company: z.string().max(100, 'Company name is too long').optional(),
+  projectType: z.string().min(1, 'Project type is required'),
+  timeline: z.string().min(1, 'Timeline is required'),
+  budgetRange: z.string().min(1, 'Budget range is required'),
   message: z.string().min(10, 'Message must be at least 10 characters').max(1000, 'Message is too long'),
 });
 
@@ -251,7 +254,13 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactFo
       timestamp: new Date().toISOString(),
       ip: clientIp,
       userAgent: request.headers.get('user-agent') || undefined,
-      ...validatedData,
+      name: validatedData.name,
+      email: validatedData.email,
+      company: validatedData.company || '',
+      projectType: validatedData.projectType,
+      timeline: validatedData.timeline,
+      budgetRange: validatedData.budgetRange,
+      message: validatedData.message,
     };
     
     // Save submission to file

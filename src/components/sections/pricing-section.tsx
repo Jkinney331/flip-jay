@@ -1,150 +1,183 @@
 "use client";
 
-import { SectionHeader } from "@/components/section-header";
-import { siteConfig } from "@/lib/config";
+import React from "react";
 import { motion } from "motion/react";
 import { LiquidButton } from "../ui/Liquid-button";
-import { Shield, Star, TrendingUp } from "lucide-react";
-import { SavingsCalculator } from "../ui/SavingCalculator";
-import { usePricingContent, useDomainContent } from "@/hooks/useDomainContent";
+import { usePricingContent } from "@/hooks/useDomainContent";
+import { CheckCircle } from "lucide-react";
 
 const PricingSection = () => {
-  const pricingContent = usePricingContent();
-  const { isSmb, isProfessional } = useDomainContent();
-
-  const PriceDisplay = ({ price }: { price: string | number }) => (
-    <motion.span
-      key={price}
-      className="text-5xl font-bold text-center"
-      initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
-      transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-    >
-      ${price}
-    </motion.span>
-  );
+  const pricingData = usePricingContent();
 
   return (
-    <section
-      id="pricing"
-      className="flex flex-col items-center justify-center gap-10 py-20 px-6 sm:px-4 md:px-8 w-full relative"
-    >
-      <SectionHeader>
-        <h2 className="text-xl md:text-4xl font-semibold tracking-tight text-center">
-          {pricingContent.title}
-        </h2>
-        <p className="text-muted-foreground text-center font-medium max-w-2xl mx-auto">
-          {pricingContent.subtitle}
-        </p>
-      </SectionHeader>
-
-      {/* Savings Banner for Professional */}
-      {isProfessional && pricingContent.savings && (
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center max-w-md">
-          <p className="text-sm font-medium text-green-700 dark:text-green-400">
-            {pricingContent.savings}
+    <section id="pricing" className="py-16 lg:py-32 dark:bg-zinc-900 bg-white">
+      <div className="mx-auto px-6">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+            Simple, transparent pricing
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+            No contracts, no minimums, no nonsense
           </p>
         </div>
-      )}
 
-      {/* Row 1 - Price card + Calculator */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl">
-        {/* Pricing Card */}
-        <div className={`w-full rounded-xl border ${isProfessional ? 'border-primary' : 'border-border'} ${isProfessional ? 'bg-primary/5' : 'bg-white/70'} dark:bg-zinc-900/50 backdrop-blur-md p-8 shadow-xl relative`}>
-          
-          {/* Badge */}
-          {pricingContent.badge && (
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <div className={`${isProfessional ? 'bg-gradient-to-r from-primary to-purple-600' : 'bg-primary'} text-white px-4 py-2 rounded-full text-sm font-bold`}>
-                {pricingContent.badge}
-              </div>
-            </div>
-          )}
-
-          <div className="mb-6 flex flex-col items-center pt-4">
-            <div className="flex items-baseline gap-2">
-              <PriceDisplay price={pricingContent.price} />
-              <span className="text-lg text-muted-foreground">/Month</span>
-            </div>
-            
-            {/* Original Price & Savings */}
-            {pricingContent.originalPrice && (
-              <div className="flex items-center gap-2 mt-2">
-                <span className="text-sm text-muted-foreground line-through">
-                  ${pricingContent.originalPrice}
+        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {/* Hourly Rate */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                Hourly Rate
+              </h3>
+              <div className="mb-6">
+                <span className="text-5xl font-bold text-blue-600 dark:text-blue-400">
+                  $75
                 </span>
-                <span className="text-sm font-medium text-green-600">
-                  Save ${parseInt(pricingContent.originalPrice) - parseInt(pricingContent.price)}
-                </span>
+                <span className="text-xl text-gray-600 dark:text-gray-300">/hour</span>
               </div>
-            )}
-            
-            <p className="text-sm text-muted-foreground mt-2 text-center">Your complete AI solution in 30 days</p>
-          </div>
+              <p className="text-gray-600 dark:text-gray-300">
+                Best for: ongoing support, bug fixes, small features
+              </p>
+            </div>
 
-          {/* Features List */}
-          <ul className="space-y-3 text-sm mb-8 flex flex-col items-center justify-center">
-            {pricingContent.features.map((feature, index) => (
-              <li key={index} className="flex items-start gap-3 text-left w-full">
-                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center mt-0.5 flex-shrink-0">
-                  <svg
-                    width="12"
-                    height="10"
-                    viewBox="0 0 12 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M2 5L4.5 7.5L10 2"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <span className="font-medium">{feature}</span>
-              </li>
-            ))}
-          </ul>
+            <ul className="space-y-4 mb-8">
+              {[
+                "Pay only for time used",
+                "Detailed time tracking",
+                "Weekly invoicing",
+                "No minimum hours",
+                "Pause anytime",
+                "Flexible scheduling"
+              ].map((feature, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-3"
+                >
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                </motion.li>
+              ))}
+            </ul>
 
-          {/* CTA Button */}
-          <div className="flex flex-col gap-2 justify-center items-center">
-            <LiquidButton className="cursor-pointer w-full">
-              {pricingContent.cta}
+            <LiquidButton
+              onClick={() => {
+                window.open("https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call", "_blank", "noopener,noreferrer");
+              }}
+              className="w-full py-4 text-lg"
+            >
+              Book a Call
             </LiquidButton>
-            <div className="flex items-center gap-1 text-green-600 text-sm">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span className="font-medium">
-                {isSmb ? "Only 3 spots left this month" : "Limited enterprise slots available"}
+          </motion.div>
+
+          {/* Project-Based */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="relative bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 border-2 border-blue-200 dark:border-blue-800 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+              <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                Most Popular
               </span>
             </div>
+
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                Project-Based
+              </h3>
+              <div className="mb-6">
+                <span className="text-5xl font-bold text-blue-600 dark:text-blue-400">
+                  Custom
+                </span>
+                <span className="text-xl text-gray-600 dark:text-gray-300"> quote</span>
+              </div>
+              <p className="text-gray-600 dark:text-gray-300">
+                Best for: clearly defined projects
+              </p>
+            </div>
+
+            <ul className="space-y-4 mb-8">
+              {[
+                "Fixed price certainty",
+                "Milestone payments",
+                "Defined deliverables",
+                "Timeline guarantee",
+                "Post-launch support included",
+                "Change order process"
+              ].map((feature, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-3"
+                >
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                </motion.li>
+              ))}
+            </ul>
+
+            <LiquidButton
+              onClick={() => {
+                window.open("https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call", "_blank", "noopener,noreferrer");
+              }}
+              className="w-full py-4 text-lg"
+            >
+              Book a Call
+            </LiquidButton>
+          </motion.div>
+        </div>
+
+        {/* Common Project Pricing */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+            Common Project Ranges
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+            {[
+              { name: "Landing Page", price: "$1,500 - $3,500" },
+              { name: "WordPress Site", price: "$2,500 - $7,500" },
+              { name: "E-commerce Store", price: "$5,000 - $15,000" },
+              { name: "Web App MVP", price: "$10,000 - $30,000" },
+              { name: "Mobile App", price: "$15,000 - $50,000" }
+            ].map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700"
+              >
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  {project.name}
+                </h4>
+                <p className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                  {project.price}
+                </p>
+              </motion.div>
+            ))}
           </div>
-        </div>
-
-        {/* Calculator - Smaller card */}
-        <div className="mx-auto w-full max-w-md rounded-xl border border-border dark:border-white/10 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-md p-6 shadow-lg">
-          <SavingsCalculator />
-        </div>
-      </div>
-
-      {/* Row 2 - Trust Badges (Only 3) with green styling */}
-      <div className="grid grid-cols-3 gap-4 w-full max-w-xl">
-        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
-          <Shield className="w-6 h-6 mx-auto text-green-600 dark:text-green-400 mb-2" />
-          <p className="text-sm font-semibold text-gray-900 dark:text-white">30-Day</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Guarantee</p>
-        </div>
-        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
-          <Star className="w-6 h-6 mx-auto text-yellow-600 dark:text-yellow-400 mb-2" />
-          <p className="text-sm font-semibold text-gray-900 dark:text-white">4.9/5</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Rating</p>
-        </div>
-        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
-          <TrendingUp className="w-6 h-6 mx-auto text-purple-600 dark:text-purple-400 mb-2" />
-          <p className="text-sm font-semibold text-gray-900 dark:text-white">72%</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">ROI</p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

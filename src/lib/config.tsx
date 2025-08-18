@@ -30,15 +30,16 @@ export const Highlight = ({
 export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
-  name: "FlipTech Pro",
-  description: "Transform your business with cutting-edge AI solutions in just 14 days.",
-  cta: "Get Started",
+  name: "FlipTech AI",
+  description: "Your On-Call Dev, On-Demand. Quality development at affordable rates.",
+  cta: "Start Your Project",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: [
-    "FlipTech Pro",
-    "AI Solutions",
-    "Business Automation",
-    "AI Development",
+    "FlipTech AI",
+    "Development Services",
+    "Web Development",
+    "Mobile Development",
+    "Hourly Developer",
   ],
   // links: {
   //   email: "support@calai.app",
@@ -49,11 +50,10 @@ export const siteConfig = {
   // },
   nav: {
     links: [
-      { id: 1, name: "Home", href: "#hero" },
-      { id: 2, name: "Teams", href: "#bento" },
-                          { id: 3, name: "Platform", href: "#agents" },
-                    { id: 4, name: "Pricing", href: "#pricing" },
-                    // { id: 5, name: "Yield Program", href: "/yield-program" }, // Temporarily hidden for team review
+      { id: 1, name: "Work", href: "#services" },
+      { id: 2, name: "Process", href: "#process" },
+      { id: 3, name: "Pricing", href: "#pricing" },
+      { id: 4, name: "Contact", href: "#contact" },
     ],
   },
   hero: {
@@ -72,14 +72,18 @@ export const siteConfig = {
     //   </svg>
     // ),
     // badge: "Introducing custom automations", 
-    title: "Built for Scale and Speed",
+    title: "Your On-Call Dev, On-Demand",
     description:
-      "From chaos to production in 30 days",
+      "From quick fixes to complete builds, I deliver. Whether you need a bug squashed or an MVP launched, I'm your guy. Hourly or fixed-fee—your project, your choice.",
     support_text: "",  
     cta: {
       primary: {
-        text: "Book Demo",
-        href: "#",
+        text: "Start Your Project",
+        href: "#contact",
+      },
+      secondary: {
+        text: "Book a Call",
+        href: "https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call",
       },
       // secondary: {
       //   text: "Log in",
@@ -184,23 +188,23 @@ export const siteConfig = {
     ],
   },
   bentoSection: {
-    title: "Empower Your organization with AI in 30 days",
+    title: "Everything you need, nothing you don't",
     description:
-      "Real-time collaboration, seamless integrations, and actionable insights to streamline your operations.",
+      "Transparent pricing, rapid delivery, and expert execution across every aspect of digital development.",
     items: [
       {
         id: 1,
         content: <FirstBentoAnimation />,
-        title: "Real-time AI Collaboration",
+        title: "Flexible Engagement",
         description:
-          "Experience real-time assistance. Ask your AI Agent to coordinate tasks, answer questions, and maintain team alignment.",
+          "Choose what works for you—$75/hour for ongoing needs or fixed pricing for defined projects. No hidden fees, no surprises.",
       },
       {
         id: 2,
         content: <SecondBentoAnimation />,
-        title: "Seamless Integrations",
+        title: "Full-Stack Capabilities",
         description:
-          "Unite your favorite tools for effortless connectivity. Boost productivity through interconnected workflows.",
+          "From React to WordPress, Shopify to custom backends—I speak the languages your project needs.",
       },
       {
         id: 3,
@@ -212,16 +216,16 @@ export const siteConfig = {
             ]}
           />
         ),
-        title: "Instant Insight Reporting",
+        title: "Rapid Turnaround",
         description:
-          "Transform raw data into clear insights in seconds. Empower smarter decisions with real-time, always-learning intelligence.",
+          "Quick fixes in hours, landing pages in days, MVPs in weeks. I move at your speed, not agency pace.",
       },
       {
         id: 4,
         content: <FourthBentoAnimation once={false} />,
-        title: "Smart Automation",
+        title: "Human + AI Powered",
         description:
-          "Set it, forget it. Your AI Agent tackles repetitive tasks so you can focus on strategy, innovation, and growth.",
+          "I use AI to accelerate the boring parts while keeping the human touch where quality matters.",
       },
     ],
   },
@@ -248,9 +252,9 @@ export const siteConfig = {
     },
   ],
   growthSection: {
-    title: "Built for Secure Growth",
+    title: "Built for your success",
     description:
-      "Where advanced security meets seamless scalability—designed to protect your data and empower your growth.",
+      "Transparent process, predictable outcomes, and a partner who actually picks up the phone.",
     items: [
       {
         id: 1,
@@ -525,9 +529,9 @@ export const siteConfig = {
           </div>
         ),
 
-        title: "Advanced Task Security",
+        title: "Transparent Pricing",
         description:
-          "Safeguard your tasks with state-of-art encryption and secure access to your workflow data.",
+          "You'll know exactly what you're paying for: detailed estimates, time tracking, and regular progress updates.",
       },
       {
         id: 2,
@@ -537,9 +541,9 @@ export const siteConfig = {
           </div>
         ),
 
-        title: "Scalable for Teams",
+        title: "Scale As Needed",
         description:
-          "Grow with your team. Track tasks across multiple workspaces and all team members.",
+          "Start with a quick fix; scale to a full squad. I add specialists as your project grows.",
       },
     ],
   },
@@ -576,20 +580,18 @@ export const siteConfig = {
       {
         name: "",
         // href: "#",
-        price: "9,500",
-        // period: "month",
+        price: "75",
+        // period: "hour",
         // yearlyPrice: "$120",
         features: [
-          "Complete AI transformation in 30 days",
-"Custom AI model development and training",
-"Integration with your existing systems",
-"Comprehensive documentation",
-"2 weeks of post-launch support",
-"Knowledge transfer session for your team",
-"AI Control Dashboard included",
-"30-day money-back guarantee",          
+          "Pay only for time used",
+          "Detailed time tracking",
+          "Weekly invoicing",
+          "No minimum hours",
+          "Pause anytime",
+          "Flexible scheduling",
         ],
-        description: "Your complete AI solution in 30 days",
+        description: "Best for: ongoing support, bug fixes, small features",
         // buttonText: "Go Professional",
         // buttonColor: "bg-secondary text-white",
         // isPopular: true,
@@ -616,100 +618,100 @@ export const siteConfig = {
   testimonials: [
     {
       id: "1",
-      name: "Yannick R.",
-      role: "Game Studio Director",
-      img: "https://randomuser.me/api/portraits/men/12.jpg",
+      name: "Sarah M.",
+      role: "Startup Founder",
+      img: "https://randomuser.me/api/portraits/women/12.jpg",
       description: (
         <p>
-          "FlipTech Pro's AI character system cut our NPC development time by 70%. Players can't tell they're not human-scripted. Game-changing for our studio."
+          "Needed our MVP built fast. FlipTech delivered in 4 weeks what agencies quoted 3 months for. Half the price too."
         </p>
       ),
     },
     {
       id: "2",
-      name: "Keith M.",
-      role: "Lead Game Developer",
+      name: "James R.",
+      role: "E-commerce Owner",
       img: "https://randomuser.me/api/portraits/men/32.jpg",
       description: (
         <p>
-          "Their AI workflow automation handles everything from combat patterns to NPC emotions. We shipped 6 months early. Incredible 14-day delivery."
+          "My Shopify store was a mess. They fixed everything in 2 days. Now it actually converts. Best $75/hour I've spent."
         </p>
       ),
     },
     {
       id: "3",
-      name: "Mike S.",
-      role: "Tech Startup Founder",
-      img: "https://randomuser.me/api/portraits/men/45.jpg",
+      name: "Lisa K.",
+      role: "Marketing Director",
+      img: "https://randomuser.me/api/portraits/women/45.jpg",
       description: (
         <p>
-          "The reinforcement learning dashboard learns from every user interaction. Our mobile ordering app now predicts with 89% accuracy. ROI in weeks."
+          "We use them for all our landing pages. Fast, responsive, and they actually understand conversion. Our go-to team."
         </p>
       ),
     },
     {
       id: "4",
-      name: "Damon L.",
-      role: "Investment Fund Manager",
+      name: "Mark D.",
+      role: "SaaS CEO",
       img: "https://randomuser.me/api/portraits/men/67.jpg",
       description: (
         <p>
-          "Their trading agent consistently outperforms our manual strategies by 23%. Best investment decision we've made this year."
+          "From React frontend to Node backend, they handle it all. Like having a CTO on demand without the equity."
         </p>
       ),
     },
     {
       id: "5",
-      name: "Josh T.",
-      role: "Healthcare Innovation Director",
-      img: "https://randomuser.me/api/portraits/men/23.jpg",
+      name: "Jennifer H.",
+      role: "Agency Owner",
+      img: "https://randomuser.me/api/portraits/women/23.jpg",
       description: (
         <p>
-          "The healthcare chatbot handles consultations and scheduling flawlessly. 60% reduction in wait times. Patients love it."
+          "We white-label through FlipTech. They handle the dev, we handle the client. Perfect partnership."
         </p>
       ),
     },
     {
       id: "6",
-      name: "Curtis P.",
-      role: "Medical Practice Owner",
+      name: "Tom S.",
+      role: "Product Manager",
       img: "https://randomuser.me/api/portraits/men/33.jpg",
       description: (
         <p>
-          "FlipTech Pro delivered a medical AI assistant that triages patients 24/7. Accuracy rivals our senior nurses. Revolutionary for healthcare."
+          "Emergency bug fix at 9 PM? They were on it. Site back up by midnight. Life savers."
         </p>
       ),
     },
     {
       id: "7",
-      name: "Teresa H.",
-      role: "AI Operations Lead",
+      name: "Rachel L.",
+      role: "Tech Lead",
       img: "https://randomuser.me/api/portraits/women/36.jpg",
       description: (
         <p>
-          "Their data sourcing solution automated our entire training pipeline. What took weeks now takes hours. Essential for scaling AI."
+          "They integrate seamlessly with our existing team. No ego, just great code and communication."
         </p>
       ),
     },
     {
       id: "8",
-      name: "Ines M.",
-      role: "Data Science Director",
-      img: "https://randomuser.me/api/portraits/women/28.jpg",
+      name: "David M.",
+      role: "CTO",
+      img: "https://randomuser.me/api/portraits/men/28.jpg",
       description: (
         <p>
-          "FlipTech Pro built us a data collection system that's both ethical and efficient. 10x improvement in data quality. Exceeded all expectations."
+          "Scaled our development capacity without the hiring headache. Consistent quality and predictable delivery."
         </p>
       ),
     },
     {
       id: "9",
-      name: "Jack K.",
-      role: "ML Engineering Manager",
-      img: "https://randomuser.me/api/portraits/men/9.jpg",
+      name: "Amanda K.",
+      role: "VP Engineering",
+      img: "https://randomuser.me/api/portraits/women/9.jpg",
       description: (
         <p>
-          "The custom AI training infrastructure they delivered handles massive datasets effortlessly. From concept to production in 14 days. Impressive execution."
+          "They speak our language and understand our stack. No learning curve, just immediate productivity."
         </p>
       ),
     },
@@ -717,43 +719,43 @@ export const siteConfig = {
   faqSection: {
     title: "Frequently Asked Questions",
     description:
-      "Answers to common questions about FlipTech Pro and its features. If you have any other questions, please don't hesitate to contact us.",
+      "Answers to common questions about our development services. If you have any other questions, please don't hesitate to contact us.",
     faQitems: [
       {
         id: 1,
-        question: "How can you deliver AI solutions in just 14 days?",
+        question: "How quickly can you start?",
         answer:
-          "AI Agent Teams are groups of specialized AI agents that work together like departments in your company. Each team handles specific functions—from marketing to operations—collaborating seamlessly to automate workflows and drive results.",
+          "Urgent fixes: often same day. Larger projects: typically within 48 hours of approval.",
       },
       {
         id: 2,
-        question: "What types of AI solutions do you build?",
+        question: "What's included in the $75/hr rate?",
         answer:
-          "FlipTech Pro deploys AI teams that integrate with your existing tools, learn your business processes, and execute tasks autonomously. Teams share context and insights, creating a unified workforce that scales with your needs.",
+          "Development, testing, deployment, and communication. No hidden PM fees.",
       },
       {
         id: 3,
-        question: "How secure is my data during development?",
+        question: "Do you offer ongoing support?",
         answer:
-          "We implement enterprise-grade security with end-to-end encryption, SOC 2 Type II certification, and role-based access controls. Your data never leaves our secure infrastructure and is protected by industry-leading standards.",
+          "Yes—retainers or ad-hoc hours both work.",
       },
       {
         id: 4,
-        question: "Can you integrate with my existing tech stack?",
+        question: "Can you work with our team?",
         answer:
-          "Absolutely. FlipTech Pro teams connect seamlessly with your current tech stack through pre-built integrations and APIs. Your AI teams work within your existing workflows, not around them.",
+          "Absolutely. I integrate with your developers, designers, or agency.",
       },
       {
         id: 5,
-        question: "What happens after the 14-day deployment?",
+        question: "What if I don't know exactly what I need?",
         answer:
-          "We offer free customized demos that give you a glimpse into the future of your operations with AI teams. See exactly how FlipTech Pro will transform your specific workflows before committing.",
+          "Book a 15-min call; I'll help you scope options.",
       },
       {
         id: 6,
-        question: "How much ongoing maintenance is required?",
+        question: "How do you handle changes?",
         answer:
-          "Our AI teams handle entire workflows—not just tasks. While one team manages customer inquiries, another analyzes data, and another optimizes operations. They work 24/7, multiplying your capacity without adding headcount.",
+          "Hourly: adjust as we go. Fixed: change orders with clear costs.",
       },
     ],
   },
@@ -763,10 +765,10 @@ export const siteConfig = {
     backgroundImage: "/agent-cta-background.webp",
     button: {
       text: "Book Demo",
-      href: "/contact",
+      href: "https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call",
     },
     subtext: "No obligations, no questions asked",
-    companyName: "FlipTech Pro"
+    companyName: "FlipTech AI"
   },
   footerLinks: [
     // {

@@ -51,21 +51,28 @@ const PricingVariantA = () => {
           {/* Best Value Badge */}
           <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold">
-              {config.badge}
+              Best Value
             </div>
           </div>
 
           <div className="mb-6 flex flex-col items-center pt-4">
             <div className="flex items-baseline gap-2">
-              <PriceDisplay price={tier.price} />
-              <span className="text-lg text-muted-foreground">/Month</span>
+              <PriceDisplay price="75" />
+              <span className="text-lg text-muted-foreground">/hour</span>
             </div>
-            <p className="text-sm text-muted-foreground mt-2 text-center">Your complete AI solution in 30 days</p>
+            <p className="text-sm text-muted-foreground mt-2 text-center">Best for: ongoing support, bug fixes, small features</p>
           </div>
 
           {/* Enhanced Features List */}
           <ul className="space-y-3 text-sm sm:text-base mb-8">
-            {config.features.map((feature, index) => (
+            {[
+              "Pay only for time used",
+              "Detailed time tracking",
+              "Weekly invoicing",
+              "No minimum hours",
+              "Pause anytime",
+              "Flexible scheduling"
+            ].map((feature, index) => (
               <li key={feature} className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center mt-0.5 flex-shrink-0">
                   <svg
@@ -95,7 +102,7 @@ const PricingVariantA = () => {
               className="cursor-pointer w-full text-lg py-4"
               onClick={handleCTAClick}
             >
-              Book Your Demo Today
+              Book a Call
             </LiquidButton>
             <div className="flex items-center gap-4 text-sm">
               <div className="flex items-center gap-1 text-green-600">

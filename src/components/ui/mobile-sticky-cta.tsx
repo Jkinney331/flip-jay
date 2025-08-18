@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { LiquidButton } from "./Liquid-button";
-import { Phone } from "lucide-react";
+import { DollarSign } from "lucide-react";
 
 export function MobileStickyCTA() {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,10 +26,11 @@ export function MobileStickyCTA() {
           const element = document.getElementById("contact");
           element?.scrollIntoView({ behavior: "smooth" });
         }}
-        className="!rounded-full w-16 h-16 shadow-xl shadow-black/30 cursor-pointer flex items-center justify-center !bg-blue-600 hover:!bg-blue-700 active:!bg-blue-800 text-white border-2 border-white/20 touch-manipulation"
-        aria-label="Contact us"
+        className="!rounded-full w-20 h-12 shadow-xl shadow-black/30 cursor-pointer flex items-center justify-center !bg-green-600 hover:!bg-green-700 active:!bg-green-800 text-white border-2 border-white/20 touch-manipulation text-xs font-semibold px-3"
+        aria-label="Get Quote"
       >
-        <Phone className="w-7 h-7" />
+        <DollarSign className="w-4 h-4 mr-1" />
+        $75/hr
       </LiquidButton>
     </div>
   );

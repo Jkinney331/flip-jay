@@ -60,8 +60,8 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState("hero");
   const { config } = useDomainContent();
   
-  // Show docs link only for FlipTech Pro
-  const showDocsLink = config?.branding?.name === 'FlipTech Pro';
+  // Docs link removed as per blueprint
+  const showDocsLink = false;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,8 +100,8 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky z-50 mx-4 flex justify-center transition-all duration-300 md:mx-0",
-        hasScrolled ? "top-6" : "top-4 mx-0",
+        "fixed z-50 left-0 right-0 flex justify-center transition-all duration-300",
+        hasScrolled ? "top-6 mx-4 md:mx-0" : "top-4 mx-0",
       )}
     >
       <motion.div
@@ -119,7 +119,7 @@ export function Navbar() {
         >
           <div className="flex h-[56px] items-center justify-between p-4">
             <Link href="/" className="flex items-center gap-3 w-52">
-              <span className="text-lg font-semibold text-primary">FlipTech Pro</span>
+              <span className="text-lg font-semibold text-primary">FlipTech AI</span>
             </Link>
 
             <NavMenu />
@@ -146,7 +146,7 @@ export function Navbar() {
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
-                  Contact Us
+                  Start Your Project
                 </LiquidButton>
               </div>
               <ThemeToggle />
@@ -191,7 +191,7 @@ export function Navbar() {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                   <Link href="/" className="flex items-center gap-3">
-                    <span className="text-base font-semibold text-primary">FlipTech Pro</span>
+                    <span className="text-base font-semibold text-primary">FlipTech AI</span>
                   </Link>
                   <button
                     onClick={toggleDrawer}
@@ -273,7 +273,7 @@ export function Navbar() {
                     }}
                     className="bg-secondary h-8 flex items-center justify-center text-sm font-normal tracking-wide rounded-full text-primary-foreground dark:text-secondary-foreground w-full px-4 shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_3px_3px_-1.5px_rgba(16,24,40,0.06),0_1px_1px_rgba(16,24,40,0.08)] border border-white/[0.12] hover:bg-secondary/80 transition-all ease-out active:scale-95"
                   >
-                    Contact Us
+                    Start Your Project
                   </button>
                 </div>
               </div>

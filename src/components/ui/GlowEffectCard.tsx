@@ -15,7 +15,7 @@ const hiddenAdvantageData = [
       gradient: CARD_GRADIENT
     },
     back: {
-      description: "We speak both languages—complex AI and practical business. Our engineers don't just build, they build what matters."
+      description: "I speak both languages—technical and practical business, building what matters."
     }
   },
   {
@@ -25,7 +25,7 @@ const hiddenAdvantageData = [
       gradient: CARD_GRADIENT
     },
     back: {
-      description: "We've been in your shoes. We know what keeps you up at night and what moves the needle. Every solution is designed for real-world impact."
+      description: "I've been in your shoes, knowing what keeps you up at night and what moves the needle. Every solution is designed for real-world impact."
     }
   },
   {
@@ -35,7 +35,7 @@ const hiddenAdvantageData = [
       gradient: CARD_GRADIENT
     },
     back: {
-      description: "While others plan, we deliver. Our 14-day promise isn't a gimmick—it's our proven methodology that gets you results before competitors finish their first meeting."
+      description: "While others plan, I deliver. My 30-day promise isn't a gimmick—it's my proven methodology that gets you results before competitors finish their first meeting."
     }
   },
   {
@@ -45,7 +45,7 @@ const hiddenAdvantageData = [
       gradient: CARD_GRADIENT
     },
     back: {
-      description: "We don't just solve today's problems. Our AI solutions are built to evolve with your business and stay ahead of the curve."
+      description: "Solutions are built to evolve with your business and stay ahead of the curve."
     }
   }
 ];

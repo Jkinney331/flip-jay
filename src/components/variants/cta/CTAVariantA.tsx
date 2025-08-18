@@ -16,7 +16,7 @@ const CTAVariantA = () => {
 
   const handleCTAClick = () => {
     trackGlobalConversion('cta_click', 'cta_section', 'variant_a');
-    window.location.href = config.button.href;
+    window.open(config.button.href, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -28,7 +28,7 @@ const CTAVariantA = () => {
         <div className="h-[450px] md:h-[500px] overflow-hidden shadow-xl w-full border border-border rounded-xl bg-secondary relative z-20">
           <Image
             src={ctaSection.backgroundImage}
-            alt="FlipTech Pro call-to-action background featuring AI technology and automation themes"
+            alt="FlipTech AI call-to-action background featuring AI technology and automation themes"
             className="absolute inset-0 w-full h-full object-cover object-right md:object-center"
             fill
             loading="lazy"
@@ -108,7 +108,7 @@ const CTAVariantA = () => {
               <Icons.gdprDark className="size-8 sm:size-10 md:size-12" />
             </div>
             
-            <p className="text-xs sm:text-sm font-medium text-white mt-2">© 2025 FlipTech Pro. All rights reserved.</p>
+            <p className="text-xs sm:text-sm font-medium text-white mt-2">© 2025 FlipTech AI. All rights reserved.</p>
             <Link
               href="/privacy"
               className="text-xs sm:text-sm font-medium text-white mt-2 sm:mt-4 md:mt-6 hover:underline"

@@ -41,82 +41,114 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden">
       <ErrorBoundary>
-        <HeroVariantWrapper>
-          {{
-            control: <HeroSection />,
-            variant_a: <HeroVariantA />,
-            variant_b: <HeroVariantB />,
-            variant_c: <HeroVariantC />
-          }}
-        </HeroVariantWrapper>
+        <div className="mb-8">
+          <HeroVariantWrapper>
+            {{
+              control: <HeroSection />,
+              variant_a: <HeroVariantA />,
+              variant_b: <HeroVariantB />,
+              variant_c: <HeroVariantC />
+            }}
+          </HeroVariantWrapper>
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <CompanyShowcase />
+        <div className="mb-16">
+          <CompanyShowcase />
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <BentoSection />
+        <div className="mb-16">
+          <BentoSection />
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <ServicesSection/>
+        <div className="mb-16">
+          <ServicesSection/>
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <DemoOne/>
+        <div className="mb-16">
+          <DemoOne/>
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <LazyWebGL height="600px" disableOnReducedMotion={false}>
-          <GlowCard/>
-        </LazyWebGL>
+        <div className="mb-16">
+          <LazyWebGL height="600px" disableOnReducedMotion={false}>
+            <GlowCard/>
+          </LazyWebGL>
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <GrowthSection />
+        <div className="mb-16">
+          <GrowthSection />
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <FlipTechProcess/>
+        <div className="mb-16">
+          <FlipTechProcess/>
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <CaseStudiesSection/>
+        <div className="mb-16">
+          <CaseStudiesSection/>
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <PricingCalculator/>
+        <div className="mb-16">
+          <PricingCalculator/>
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <WhyNowSection/>
+        <div className="mb-16">
+          <WhyNowSection/>
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <PricingVariantWrapper>
-          {{
-            control: <PricingSection />,
-            variant_a: <PricingVariantA />,
-            variant_b: <PricingVariantB />
-          }}
-        </PricingVariantWrapper>
+        <div className="mb-16">
+          <PricingVariantWrapper>
+            {{
+              control: <PricingSection />,
+              variant_a: <PricingVariantA />,
+              variant_b: <PricingVariantB />
+            }}
+          </PricingVariantWrapper>
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <TestimonialSection />
+        <div className="mb-16">
+          <TestimonialSection />
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <ContactSection/>
+        <div className="mb-16">
+          <ContactSection/>
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <FAQSection />
+        <div className="mb-16">
+          <FAQSection />
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>
-        <CTASection />
+        <div className="mb-8">
+          <CTASection />
+        </div>
       </ErrorBoundary>
       
       <ErrorBoundary>

@@ -20,7 +20,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-zinc-900 pt-32">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-32 pb-16">
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
         <motion.div
@@ -42,7 +42,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold text-black dark:text-white mb-6 leading-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-tight"
         >
           On-Demand{" "}
           <span className="inline-block">
@@ -52,7 +52,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="text-blue-600 dark:text-blue-400"
+              className="text-secondary"
             >
               {rotatingWords[currentWordIndex]}
             </motion.span>
@@ -64,7 +64,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl md:text-2xl text-black dark:text-gray-300 mb-12 max-w-3xl mx-auto"
+          className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto"
         >
           From quick fixes to complete builds, I deliver. Whether you need a bug squashed or an MVP launched, I'm your guy. Hourly or fixed-fee—your project, your choice.
         </motion.p>
@@ -79,7 +79,7 @@ const HeroSection = () => {
             onClick={() => {
               window.open("https://calendly.com/jay-flip-tech/flip-tech-pro-introduction-call", "_blank", "noopener,noreferrer");
             }}
-            className="px-8 py-4 text-lg font-medium bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all transform hover:scale-105"
+            className="px-8 py-4 text-lg font-medium bg-secondary text-secondary-foreground rounded-full hover:bg-secondary/90 transition-all transform hover:scale-105"
           >
             Book a Call
           </button>
@@ -88,7 +88,7 @@ const HeroSection = () => {
               const element = document.getElementById("contact");
               element?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="px-8 py-4 text-lg font-medium bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-all transform hover:scale-105"
+            className="px-8 py-4 text-lg font-medium bg-muted text-muted-foreground rounded-full hover:bg-muted/90 transition-all transform hover:scale-105"
           >
             Start Your Project
           </button>

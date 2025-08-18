@@ -3,17 +3,12 @@
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "18"
-  NPM_VERSION = "9"
+  NODE_VERSION = "20"
+  NPM_VERSION = "10"
 
 # Next.js plugin configuration
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
 [context.production.environment]
   NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptechpro.com"

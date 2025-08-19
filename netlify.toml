@@ -1,6 +1,6 @@
 [build]
-  command = "npm run build && cp -r .next/static .next/standalone/.next/ && mkdir -p .next/standalone/public && cp -r public/* .next/standalone/public/"
-  publish = ".next/standalone"
+  command = "npm run build"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
@@ -9,10 +9,6 @@
 # Next.js plugin configuration
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Enable experimental edge runtime for Netlify
-[build.processing]
-  skip_processing = false
 
 [context.production.environment]
   NEXT_PUBLIC_DEFAULT_DOMAIN = "fliptechpro.com"

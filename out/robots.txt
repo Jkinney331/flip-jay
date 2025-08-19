@@ -1,0 +1,21 @@
+# FlipTech Pro - Robots.txt
+
+User-agent: *
+Allow: /
+
+# SEO-friendly pages
+Allow: /contact
+Allow: /about
+Allow: /services
+
+# Block sensitive areas (if any exist)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://fliptechpro.com/sitemap.xml
+
+# Crawl delay (optional - helps manage server load)
+Crawl-delay: 1

@@ -1,0 +1,12 @@
+# Netlify redirects file
+# This ensures proper routing for Next.js applications
+
+# API Routes
+/api/*  /.netlify/functions/:splat  200
+
+# Next.js static files
+/_next/static/*  /_next/static/:splat  200!
+/_next/image  /_next/image  200!
+
+# SPA fallback for client-side routing
+/*  /index.html  200
